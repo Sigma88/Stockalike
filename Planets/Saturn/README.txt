@@ -4,3 +4,7 @@ Required Mods:
 - Kopernicus
 - Outer Planets Mod
 - Saru Planet Pack
+
+# Image
+
+![Saturn](https://github.com/Sigma88/SSS/raw/Screenshots/Images/Saturn.png)
