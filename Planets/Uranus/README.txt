@@ -1,0 +1,4 @@
+Required Mods:
+
+- ModuleManager
+- Kopernicus
