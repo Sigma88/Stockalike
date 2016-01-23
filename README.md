@@ -4,7 +4,7 @@
 |------|--------------------|-------------|
 | Sun | Sun | Stock |
 | Mercury | Ike | U L |
-| Venus | Mun | U L |
+| Venus | Duna | U L |
 | Earth | Kerbin | Stock |
 | Moon | Tylo | U L |
 | Mars | Duna | Stock |
