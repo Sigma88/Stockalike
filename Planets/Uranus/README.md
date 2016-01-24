@@ -2,6 +2,7 @@
 
 - ModuleManager
 - Kopernicus
+- Outer Planets Mod
 
 # Image
 
