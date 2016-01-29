@@ -5,4 +5,4 @@
 
 # Image
 
-![Not Available](https://github.com/Sigma88/SSS/raw/Screenshots/Images/Mars.png)
+![Not Available](https://raw.githubusercontent.com/Sigma88/Stockalike/Screenshots/Images/Mars.png)
