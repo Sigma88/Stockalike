@@ -9,4 +9,4 @@
 
 # Image
 
-![Not Available](https://github.com/Sigma88/Stockalike/raw/Screenshots/Images/JupiterSatellites.png)
+![Not Available](https://raw.githubusercontent.com/Sigma88/Stockalike/Screenshots/Images/JupiterSattellites.png)
