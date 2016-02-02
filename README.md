@@ -12,14 +12,14 @@
 | [Deimos](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/MarsSatellites) | Gilly | Stock |
 | [Vesta](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Ovok | OPM |
 | [Ceres](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Vall | UL |
-| [Jupiter](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Jupiter) | Jool | JoolRecolor |
+| [Jupiter](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Jupiter) | Jool | Jool Recolor |
 | [Europa](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Eeloo | Stock |
-| [Io](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Laythe | LavaLaythe |
+| [Io](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Laythe | Lava Laythe |
 | [Ganymede](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Slate | OPM |
 | [Callisto](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Dres | UL |
 | [Saturn](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Saturn) | Saru | Saru Planet Pack | v0.1 |
 | [Prometheus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Nisse | OPM |
-| [Titan](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Eve | EveRecolor |
+| [Titan](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Eve | Eve Recolor |
 | [Iapetus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Wal | OPM |
 | [Uranus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Uranus) | None | Custom |
 | [Miranda](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Polta | OPM |
