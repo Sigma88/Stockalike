@@ -1,3 +1,3 @@
 # Image
 
-![Not Available](https://raw.githubusercontent.com/Sigma88/Stockalike/Screenshots/Images/JupiterSattellites.png)
+![Not Available](https://raw.githubusercontent.com/Sigma88/Stockalike/Screenshots/Images/JupiterSatellites.png)
