@@ -18,16 +18,16 @@
 | [Ganymede](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Slate | OPM | Not Implemented |
 | [Callisto](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Dres | U L | Not Implemented |
 | [Saturn](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Saturn) | Saru | Saru Planet Pack | v0.1 |
-| [Iapetus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Wal | OPM | Not Implemented |
-| [Titan](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Eve | Eve Recolor | Not Implemented |
 | [Prometheus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Nisse | OPM | Not Implemented |
+| [Titan](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Eve | Eve Recolor | Not Implemented |
+| [Iapetus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/SaturnSatellites) | Wal | OPM | Not Implemented |
 | [Uranus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Uranus) | None | Custom | v0.1 |
-| [Titania](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Tylo | Stock | Not Implemented |
 | [Miranda](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Polta | OPM | Not Implemented |
+| [Titania](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Tylo | Stock | Not Implemented |
 | [Sycorax](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Shay | K+ | Not Implemented |
 | [Neptune](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Neptune) | Sarin | K+ | v0.1 |
+| [Proteus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/NeptuneSatellites) | Priax | OPM | Not Implemented |
 | [Triton](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/NeptuneSatellites) | Plock | OPM | Not Implemented |
 | [Nereid](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/NeptuneSatellites) | Bop | U L | Not Implemented |
-| [Proteus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/NeptuneSatellites) | Priax | OPM | Not Implemented |
 | [Pluto](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Karen | OPM | Not Implemented |
 | [Charon](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Ike | Stock | Not Implemented |
