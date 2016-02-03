@@ -2,16 +2,16 @@
 
 ## Required Mods
 
-- [ModuleManager](http://forum.kerbalspaceprogram.com/index.php/topic/50533-/)
-- [Kopernicus](http://forum.kerbalspaceprogram.com/index.php/topic/103277-/)
-- [Sigma Dimensions](http://forum.kerbalspaceprogram.com/index.php/topic/126548-/)
-- [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php/topic/119263-/)
-- [Outer Planets Mod](http://forum.kerbalspaceprogram.com/index.php/topic/93999-/)
+- [**ModuleManager**](http://forum.kerbalspaceprogram.com/index.php/topic/50533-/)
+- [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php/topic/103277-/)
+- [**Sigma Dimensions**](http://forum.kerbalspaceprogram.com/index.php/topic/126548-/)
 - [Kerbol Plus Remade](http://forum.kerbalspaceprogram.com/index.php/topic/124505-/)
-- [Uncharted Lands](http://forum.kerbalspaceprogram.com/index.php/topic/120111-/)
-- [Sigma: Lava Laythe](http://forum.kerbalspaceprogram.com/index.php/topic/130418-/)
+- [Outer Planets Mod](http://forum.kerbalspaceprogram.com/index.php/topic/93999-/)
+- [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php/topic/119263-/)
 - [Sigma: Eve Recolor](http://forum.kerbalspaceprogram.com/index.php/topic/122481-/)
 - [Sigma: Jool Recolor](http://forum.kerbalspaceprogram.com/index.php/topic/122505-/)
+- [Sigma: Lava Laythe](http://forum.kerbalspaceprogram.com/index.php/topic/130418-/)
+- [Uncharted Lands](http://forum.kerbalspaceprogram.com/index.php/topic/120111-/)
 
 
 ## List of Bodies
