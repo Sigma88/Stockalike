@@ -16,7 +16,7 @@
 
 ## List of Bodies
 
-| Real | Kopernicus Version | Mod |
+| Real | Kopernicus<br>Version | Mod |
 |:----:|:----:|:----:|
 | [Sun](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Sun) | Sun | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Sun) |
 | [Mercury](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Mercury) | Ike | [UL](http://forum.kerbalspaceprogram.com/index.php/topic/120111-/) |
