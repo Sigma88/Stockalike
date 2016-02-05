@@ -1,5 +1,14 @@
 # Stock-alike Solar System
 
+
+KSP Forum Thread: http://forum.kerbalspaceprogram.com/index.php/topic/131405-/
+
+Download Latest Release: https://github.com/Sigma88/Stockalike/releases/latest
+
+Dev version: https://github.com/Sigma88/Stockalike/tree/Development
+
+
+
 ## Required Mods
 
 - [**ModuleManager**](http://forum.kerbalspaceprogram.com/index.php/topic/50533-/)
