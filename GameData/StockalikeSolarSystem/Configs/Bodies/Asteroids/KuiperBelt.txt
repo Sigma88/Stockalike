@@ -1,0 +1,83 @@
+@Kopernicus:AFTER[SigDim2]
+{
+	Asteroid
+	{
+		name = Kuiper Belt
+		Locations
+		{
+			Around
+			{
+				Body 
+				{
+					body = Sun
+					minAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@minAltitude *= 1.31037069710445
+					@minAltitude *= 0.9999
+					maxAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@maxAltitude *= 1.31037069710445
+					@maxAltitude *= 1.0001
+					probability = 50
+					reached = false
+				}
+			}
+			Around
+			{
+				Body 
+				{
+					body = Sun
+					minAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@minAltitude *= 1.40572110883625
+					@minAltitude *= 0.9999
+					maxAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@maxAltitude *= 1.40572110883625
+					@maxAltitude *= 1.0001
+					probability = 12.5
+					reached = false
+				}
+			}
+			Around
+			{
+				Body 
+				{
+					body = Sun
+					minAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@minAltitude *= 1.45219643339093
+					@minAltitude *= 0.9999
+					maxAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@maxAltitude *= 1.45219643339093
+					@maxAltitude *= 1.0001
+					probability = 25
+					reached = false
+				}
+			}
+			Around
+			{
+				Body 
+				{
+					body = Sun
+					minAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@minAltitude *= 1.5874010519682
+					@minAltitude *= 0.9999
+					maxAltitude = #$@Kopernicus/Body[Neptune]/Orbit/semiMajorAxis$
+					@maxAltitude *= 1.5874010519682
+					@maxAltitude *= 1.0001
+					probability = 12.5
+					reached = false
+				}
+			}
+		}
+		interval = 5
+		minUntrackedLifetime = 1
+		maxUntrackedLifetime = 5
+		probability = 100
+		spawnGroupMinLimit = 16
+		spawnGroupMaxLimit = 32
+		Size
+		{
+			key = 0   0
+			key = 0.3 0.45
+			key = 0.7 0.55
+			key = 1   1
+		}
+	}
+}
