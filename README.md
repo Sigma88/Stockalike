@@ -36,7 +36,7 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 | [Mars](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Mars) | Duna | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Duna) |
 | [Phobos](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/MarsSatellites) | Bop | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Bop) |
 | [Deimos](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/MarsSatellites) | Gilly | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Gilly) |
-| [Vesta](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Ovok | [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-/) |
+| [Vesta](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Inaccessable | [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-/) |
 | [Ceres](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Vall | [UL](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-/) |
 | [Jupiter](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Jupiter) | Jool | [Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122505-/) |
 | [Europa](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Eeloo | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Eeloo) |
