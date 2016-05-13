@@ -42,5 +42,5 @@ many thanks to:
 @tygoo7 for Saru Planet Pack<br>
 @Borisbee for Sentar Expansion<br>
 @cybutek for KSP-AVC<br>
-@GregroxMun for testing, giving suggestions and streaming the mod on his twitch channel<br>
+@GregroxMun for testing, giving suggestions and streaming the mod on [his twitch channel](https://www.twitch.tv/gregroxmun)<br>
 @NathanKell for answering my questions about kopernicus and the solar system<br>
