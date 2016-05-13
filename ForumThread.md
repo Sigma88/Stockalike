@@ -31,6 +31,55 @@ You can activate any of them in the Settings.cfg file you find in the Stockalike
 - **RealSizeSystem** - Gives all bodies the same size as their real life counterpart
 - **UranusTilt** - Gives Uranus 90° Axial tilt
 
+## Easter Eggs
+
+Stock-alike Solar System features a certain number of easter eggs.
+When you open the spoiler down here, you will find other spoilers (one per easter egg) with a small description of the location so you can choose which easter egg to look at.
+Inside the spoiler of each easter egg you will find more detailed information about the location of the easter egg, pictures and an explanation of what the easter egg is.
+If you find an easter egg in game, or you decide to look at this list, please don't spoil the surprise for other players.
+If you want to post about an easter egg in the thread, hide everything inside a spoiler and put a warning outside so that people know that there are easter egg informations inside the spoiler.
+
+#### Earth's Ocean, Northern emisphere.
+
+A small version of Azeroth from the famous MMORPG World of Warcraft has emerged near the Northern Ice Caps of Earth.
+Coordinates ~ LAT: 66 LON: 0
+
+
+#### Orbiting the Earth.
+
+A reproduction of the Space Station "Mir" can sometimes be spotted in orbit around Earth.
+Its eccentric orbit brings it inside the atmosphere when closer to the Earth, approach might be tricky.
+
+
+#### Orbiting the Moon.
+
+Sometimes a Stargate appears in a polar orbit around the Moon.
+Nobody knows where this "portal" might lead, but the colors of the bigger chevrons might give you some more clues.
+
+
+#### Orbiting the Sun at Earth's L3 point.
+
+A borg cube can sometimes be spotted hiding behind the Sun. Some ships have reported temporal anomalies when approaching the cube.
+
+
+#### Orbiting the Sun at Jupiter's L5 point.
+
+This is a very unusual Trojan of Jupiter since it has the shape of an horse. It might be a gift from some alien civilization.
+
+
+#### Orbiting Saturn
+
+##### Mean Anomaly At Epoch = 3.2
+
+This is no moon, this is a TIE fighter. And it's hiding from whatever the other easter egg is.
+
+##### Mean Anomaly At Epoch = 0.07
+
+The mission of this Type-F Shuttlecraft is to find out whatever the other easter egg is.
+
+
+
+
 ## Credits
 
 many thanks to:
