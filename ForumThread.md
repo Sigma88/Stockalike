@@ -1,5 +1,9 @@
 # *Stock-alike Solar System*
 
+Kopernicus is a wonderful mod, and there are a lot of great planets out there.
+This mod will rearrange bodies from many different planet packs
+in order to create a Kerbal analogue of the Real Solar System
+
 ## System Description
 
 This mod rearranges bodies from other mods to reproduce the Solar System but with a Kerbal style.
