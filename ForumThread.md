@@ -30,3 +30,17 @@ You can activate any of them in the Settings.cfg file you find in the Stockalike
 - **KerbalizedNames** - Gives all bodies stockalike names
 - **RealSizeSystem** - Gives all bodies the same size as their real life counterpart
 - **UranusTilt** - Gives Uranus 90° Axial tilt
+
+## Credits
+
+many thanks to:
+
+@sarbian for ModuleManager
+@Thomas P. for Kopernicus
+@KillAshley for Kerbol Plus Remade and Uncharted Lands
+@CaptRobau and @Eudae55 for Outer Planets Mod
+@tygoo7 for Saru Planet Pack
+@Borisbee for Sentar Expansion
+@cybutek for KSP-AVC
+@GregroxMun for testing, giving suggestions and streaming the mod on his twitch channel
+@NathanKell for answering my questions about kopernicus and the solar system
