@@ -1,3 +1,26 @@
+**v0.2.0**
+
+- Added required mod: Sentar Expansion
+- Inaccessable (Sentar Expansion) is now used as Vesta
+- Ovok (Outer Planets Mod) is now used as Haumea
+- Added two procedural asteroids as Haumea satellites
+- Added the option to choose the starting year
+- Fixed the Main Asteroid Belt
+- Fixed Jupiter's Trojan asteroids
+- Fixed Halley's comet
+- Added the Kuiper Belt
+- Changed the descriptions of all planets
+- Added Gregscriptions (alternative descriptions from GregroxMun)
+- Fixed Mercury rotation period
+- Various fixes to planet multipliers
+- Updated SigmaBinary compatibility
+- Fixed Venus atmosphere color
+- Fixed Sycorax pole spike
+- Fixed Saturn oblateness
+- Fixed orbit colors of dwarf planets
+- Added Easter Eggs
+
+
 **v0.1.0**
 
 - First Beta Release
