@@ -1,3 +1,21 @@
+**v0.3.0**
+
+- Added required mod: New Horizons
+- Added required mod: Revamped Stock Solar System
+- Dres (Uncharted Lands) is now used as Mercury
+- Leouch (New Horizons) is now used as Io
+- Bop (Revamped Stock Solar System) is now used as Callisto
+- Astid (New Horizons) is now used as Prometheus
+- Gobe (Revamped Stock Solar System) is now used as Sycorax
+- Oree (New Horizons) is now used as Nereid
+- Kev (Revamped Stock Solar System) is now used as Haumea
+- Added Realistic Atmospheres (kindly provided by OhioBob)
+- Added Oblateness for all Gas Giants
+- Fixed orbital periods of all the bodies orbiting the Sun
+- Various fixes to planet multipliers
+- Updated Sigma Dimensions compatibility
+
+
 **v0.2.0**
 
 - Added required mod: Sentar Expansion
