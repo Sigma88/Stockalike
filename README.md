@@ -41,7 +41,7 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 | [Ceres](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Vall | [UL](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-/) |
 | [Jupiter](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Jupiter) | Jool | [Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122505-/) |
 | [Europa](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Eeloo | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Eeloo) |
-| [Io](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Laythe | [Lava Laythe](http://forum.kerbalspaceprogram.com/index.php?/topic/130418-/) |
+| [Io](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Leouch | [NH](http://forum.kerbalspaceprogram.com/index.php?/topic/102776-/) |
 | [Ganymede](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Slate | [OPM](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-/) |
 | [Callisto](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Bop | [RevSS](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-/) |
 | [Saturn](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Saturn) | Saru | [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php?/topic/119263-/) |
