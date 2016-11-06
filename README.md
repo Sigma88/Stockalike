@@ -1,7 +1,7 @@
 # Stock-alike Solar System
 
 
-KSP Forum Thread: http://forum.kerbalspaceprogram.com/index.php?/topic/131405-/
+KSP Forum Thread: http://forum.kerbalspaceprogram.com/index.php?/topic/131405-0/
 
 Download Latest Release: https://github.com/Sigma88/Stockalike/releases/latest
 
@@ -11,18 +11,18 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 
 ## Required Mods
 
-- [**ModuleManager**](http://forum.kerbalspaceprogram.com/index.php?/topic/50533-/)
-- [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php?/topic/103277-/)
-- [**Sigma Dimensions**](http://forum.kerbalspaceprogram.com/index.php?/topic/126548-/)
-- [Kerbol Plus Remade](http://forum.kerbalspaceprogram.com/index.php?/topic/124505-/)
-- [New Horizons](http://forum.kerbalspaceprogram.com/index.php?/topic/102776-/)
-- [Outer Planets Mod](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-/)
-- [Revamped Stock Solar System](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-/)
-- [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php?/topic/119263-/)
-- [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-/)
-- [Sigma: Eve Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122481-/)
-- [Sigma: Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122505-/)
-- [Uncharted Lands](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-/)
+- [**ModuleManager**](http://forum.kerbalspaceprogram.com/index.php?/topic/50533-0/)
+- [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php?/topic/103277-0/)
+- [**Sigma Dimensions**](http://forum.kerbalspaceprogram.com/index.php?/topic/126548-0/)
+- [Kerbol Plus Remade](http://forum.kerbalspaceprogram.com/index.php?/topic/124505-0/)
+- [New Horizons](http://forum.kerbalspaceprogram.com/index.php?/topic/102776-0/)
+- [Outer Planets Mod](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-0/)
+- [Revamped Stock Solar System](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-0/)
+- [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php?/topic/119263-0/)
+- [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-0/)
+- [Sigma: Eve Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122481-0/)
+- [Sigma: Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122505-0/)
+- [Uncharted Lands](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-0/)
 
 
 ## List of Bodies
