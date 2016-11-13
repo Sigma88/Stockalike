@@ -11,7 +11,7 @@
 - New analogues for:
     > Mercury (Dres - Uncharted Lands)
     > Mars (Duna - Duna Restoration Project)
-	> Jupiter (Jool - Revolting Jool Recolor)
+    > Jupiter (Jool - Revolting Jool Recolor)
     > Io (Leouch - Uncharted Lands)
     > Callisto (Bop - Revamped Stock Solar System)
     > Prometheus (Astid - New Horizons)
