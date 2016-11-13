@@ -14,14 +14,15 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 - [**ModuleManager**](http://forum.kerbalspaceprogram.com/index.php?/topic/50533-0/)
 - [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php?/topic/103277-0/)
 - [**Sigma Dimensions**](http://forum.kerbalspaceprogram.com/index.php?/topic/126548-0/)
+- [Duna Restoration Project](http://forum.kerbalspaceprogram.com/index.php?/topic/151632-0/)
 - [Kerbol Plus Remade](http://forum.kerbalspaceprogram.com/index.php?/topic/124505-0/)
 - [New Horizons](http://forum.kerbalspaceprogram.com/index.php?/topic/102776-0/)
 - [Outer Planets Mod](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-0/)
 - [Revamped Stock Solar System](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-0/)
+- [Revolting Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/142085-0/)
 - [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php?/topic/119263-0/)
 - [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-0/)
 - [Sigma: Eve Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122481-0/)
-- [Sigma: Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122505-0/)
 - [Uncharted Lands](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-0/)
 
 
@@ -34,12 +35,12 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 | [Venus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Venus) | Duna | [UL](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-0/) |
 | [Earth](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Earth) | Kerbin | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Kerbin) |
 | [Moon](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/EarthSatellites) | Eeloo | [UL](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-0/) |
-| [Mars](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Mars) | Duna | [RevSS](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-0/) |
+| [Mars](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Mars) | Duna | [DRP](http://forum.kerbalspaceprogram.com/index.php?/topic/151632-0/) |
 | [Phobos](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/MarsSatellites) | Bop | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Bop) |
 | [Deimos](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/MarsSatellites) | Gilly | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Gilly) |
 | [Vesta](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Inaccessable | [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-0/) |
 | [Ceres](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/DwarfPlanets) | Vall | [UL](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-0/) |
-| [Jupiter](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Jupiter) | Jool | [Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122505-0/) |
+| [Jupiter](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Jupiter) | Jool | [Revolting Jool](http://forum.kerbalspaceprogram.com/index.php?/topic/142085-0/) |
 | [Europa](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Eeloo | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Eeloo) |
 | [Io](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Leouch | [NH](http://forum.kerbalspaceprogram.com/index.php?/topic/102776-0/) |
 | [Ganymede](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/JupiterSatellites) | Slate | [OPM](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-0/) |
