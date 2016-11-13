@@ -21,12 +21,13 @@
 | Titan | Tian |
 | Iapetus | Itus |
 | Uranus | Uool |
-| Titania | Tinia |
 | Miranda | Minda |
 | Sycorax | Syax |
+| Titania | Tinia |
 | Neptune | Nool |
+| Proteus | Prous |
 | Triton | Tito |
 | Nereid | Neid |
-| Proteus | Prous |
 | Pluto | Puto |
 | Charon | Cron |
+| Haumea | Hume |

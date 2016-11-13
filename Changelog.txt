@@ -1,3 +1,33 @@
+**v0.3.0**
+
+- Removed required mods:
+    > Sigma: Jool Recolor
+    > Sigma: Lava Laythe
+- Added required mods:
+    > Duna Restoration Project
+    > New Horizons
+    > Revamped Stock Solar System
+    > Revolting Jool Recolor
+- New analogues for:
+    > Mercury (Dres - Uncharted Lands)
+    > Mars (Duna - Duna Restoration Project)
+	> Jupiter (Jool - Revolting Jool Recolor)
+    > Io (Leouch - Uncharted Lands)
+    > Callisto (Bop - Revamped Stock Solar System)
+    > Prometheus (Astid - New Horizons)
+    > Sycorax (Gobe - Revamped Stock Solar System)
+    > Nereid (Oree - New Horizons)
+    > Charon (Ike - Revamped Stock Solar System)
+    > Haumea (Kev - Revamped Stock Solar System)
+- Updated to KSP 1.2.1 and Kopernicus 1.2.1-1
+- Updated Sigma Dimensions compatibility
+- Improved generation of the system for better modularity
+- Added Realistic Atmospheres (kindly provided by OhioBob)
+- Added Oblateness for all Gas Giants
+- Fixed orbital periods of all the bodies orbiting the Sun
+- Various fixes to planet multipliers
+
+
 **v0.2.0**
 
 - Added required mod: Sentar Expansion
