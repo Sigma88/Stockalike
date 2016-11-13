@@ -12,7 +12,7 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 ## Required Mods
 
 - [**ModuleManager**](http://forum.kerbalspaceprogram.com/index.php?/topic/50533-0/)
-- [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php?/topic/103277-0/)
+- [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php?/topic/140580-0/)
 - [**Sigma Dimensions**](http://forum.kerbalspaceprogram.com/index.php?/topic/126548-0/)
 - [Duna Restoration Project](http://forum.kerbalspaceprogram.com/index.php?/topic/151632-0/)
 - [Kerbol Plus Remade](http://forum.kerbalspaceprogram.com/index.php?/topic/124505-0/)
