@@ -34,3 +34,9 @@
 - Unique concept
 - Requires only minimal additions
 - Dependencies not included
+
+# Scam Alert Security System
+- Not actually the real solar system
+- Prolonged exposure can cause Kerbal disassembly
+- Not suitable for sarcasm-impaired individuals
+- Keep out of the reach of children and GregroxMuns
