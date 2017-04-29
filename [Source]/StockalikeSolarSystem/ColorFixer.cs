@@ -12,8 +12,8 @@ using KSP.UI.Screens;
 
 namespace SASSPlugin
 {
-    [ExternalParserTarget("ScaledVersion")]
-    public class RingLoader : ExternalParserTargetLoader, IParserEventSubscriber
+    [ParserTargetExternal("Body", "ScaledVersion")]
+    public class RingLoader : BaseLoader, IParserEventSubscriber
     {
         void IParserEventSubscriber.Apply(ConfigNode node)
         {
