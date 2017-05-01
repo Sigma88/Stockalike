@@ -1,3 +1,17 @@
+**v0.4.0**
+
+- Removed required mods:
+    > Kerbol Plus Remade
+- Added required mods:
+    > GregroxMun Stockalike Neptune
+- New analogues for:
+    > Neptune (Gas Giant - GregroxMun Stockalike Neptune)
+- Updated to KSP 1.2.2 and Kopernicus 1.2.2-5
+- Tweaked planet descriptions
+- Reduced ambient light to give darker shadows
+- RealSize atmospheres now use the atmoTopLayer parameter as well
+
+
 **v0.3.1**
 
 - Fixed Galactic Neighborhood compatibility
