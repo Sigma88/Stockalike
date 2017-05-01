@@ -1,3 +1,3 @@
 # Image
 
-![Not Available](https://raw.githubusercontent.com/Sigma88/Stockalike/Screenshots/Images/Mercury.png)
+![Link](http://i.imgur.com/nsMtKtw.png)
