@@ -12,8 +12,8 @@ using KSP.UI.Screens;
 
 namespace SASSPlugin
 {
-    [ExternalParserTarget("ScaledVersion")]
-    public class SigmaLoader : ExternalParserTargetLoader, IParserEventSubscriber
+    [ParserTargetExternal("Body", "ScaledVersion")]
+    public class RingLoader : BaseLoader, IParserEventSubscriber
     {
         void IParserEventSubscriber.Apply(ConfigNode node)
         {
@@ -30,7 +30,7 @@ namespace SASSPlugin
             }
         }
     }
-    
+
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
     public class ColorFixer : MonoBehaviour
     {
@@ -41,34 +41,38 @@ namespace SASSPlugin
             Texture2D RingText = Utility.CreateReadable(Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "OPM/KopernicusConfigs/OuterPlanets/RingTextures/Sarnus_ring"));
             Texture2D MainText = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "SaturnRingRecolor");
 
-            for (int x = 0; x < RingText.height; x++)
+            if (RingText != null && MainText != null)
             {
-                Color color = RingText.GetPixel(0, x);
+                for (int x = 0; x < RingText.height; x++)
+                {
+                    Color color = RingText.GetPixel(0, x);
 
-                color =
-                    new Color
-                    (
-                        color.r * 0.895f,
-                        color.g * 1.010f,
-                        color.b * 1.095f,
-                        color.a * 0.5f
-                    );
+                    color =
+                        new Color
+                        (
+                            color.r * 0.895f,
+                            color.g * 1.010f,
+                            color.b * 1.095f,
+                            color.a * 0.5f
+                        );
 
-                MainText.SetPixel(0, x, color);
+                    MainText.SetPixel(0, x, color);
+                }
+
+                MainText.Apply();
+
             }
 
-            MainText.Apply();
 
 
-
-
-            // Recolor Jool Texture
+            // Recolor Jupiter's Texture
 
             CelestialBody jupiter = FlightGlobals.Bodies.First(b => b.transform.name == "Jupiter");
+
             if (jupiter != null)
             {
                 Texture2D MainTex = Utility.CreateReadable(jupiter.scaledBody.GetComponent<Renderer>().material.GetTexture("_MainTex") as Texture2D);
-                
+
                 for (int x = 0; x < MainTex.width; x++)
                 {
                     for (int y = 0; y < MainTex.height; y++)
@@ -89,12 +93,48 @@ namespace SASSPlugin
                 }
 
                 MainTex.Apply();
-                MainTex.name = "RevoltingJoolRecolor";
+                MainTex.name = "JupiterRecolor";
                 jupiter.scaledBody.GetComponent<Renderer>().material.SetTexture("_MainTex", MainTex);
 
                 if (OnDemandStorage.useOnDemand)
                 {
                     ScaledSpaceDemand demand = jupiter.scaledBody.GetComponent<ScaledSpaceDemand>();
+                    demand.texture = MainTex.name;
+                }
+            }
+
+
+
+            // Recolor Neptune's Texture
+
+            CelestialBody neptune = FlightGlobals.Bodies.First(b => b.transform.name == "Neptune");
+            if (neptune != null)
+            {
+                Texture2D MainTex = Utility.CreateReadable(neptune.scaledBody.GetComponent<Renderer>().material.GetTexture("_MainTex") as Texture2D);
+
+                for (int x = 0; x < MainTex.width; x++)
+                {
+                    for (int y = 0; y < MainTex.height; y++)
+                    {
+                        Color color1 = MainTex.GetPixel(x, y);
+                        color1 =
+                        new Color
+                        (
+                            (float)(Math.Pow(color1.r, 3) + Math.Pow(color1.b, 3) - 1),
+                            (float)(Math.Pow(color1.g / color1.b, 3) * 0.2f + (Math.Pow(color1.r, 3) + Math.Pow(color1.b, 3) - 1) * 0.8f),
+                            1,
+                            1
+                        );
+                        MainTex.SetPixel(x, y, color1);
+                    }
+                }
+                MainTex.Apply();
+                MainTex.name = "NeptuneRecolor";
+                neptune.scaledBody.GetComponent<Renderer>().material.SetTexture("_MainTex", MainTex);
+
+                if (OnDemandStorage.useOnDemand)
+                {
+                    ScaledSpaceDemand demand = neptune.scaledBody.GetComponent<ScaledSpaceDemand>();
                     demand.texture = MainTex.name;
                 }
             }
@@ -113,11 +153,18 @@ namespace SASSPlugin
     {
         void Start()
         {
-            Texture2D jupiter = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "RevoltingJoolRecolor");
-            RDPlanetListItemContainer item = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Jupiter");
+            Texture2D jupiter = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "JupiterRecolor");
+            RDPlanetListItemContainer itemJ = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Jupiter");
 
-            if (jupiter != null && item != null)
-                item.planet.GetComponent<Renderer>().material.mainTexture = jupiter;
+            if (jupiter != null && itemJ != null)
+                itemJ.planet.GetComponent<Renderer>().material.mainTexture = jupiter;
+
+
+            Texture2D neptune = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "NeptuneRecolor");
+            RDPlanetListItemContainer itemN = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Neptune");
+
+            if (neptune != null && itemN != null)
+                itemN.planet.GetComponent<Renderer>().material.mainTexture = neptune;
         }
     }
 }
