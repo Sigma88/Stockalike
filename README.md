@@ -15,7 +15,6 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 - [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php?/topic/140580-0/)
 - [**Sigma Dimensions**](http://forum.kerbalspaceprogram.com/index.php?/topic/126548-0/)
 - [Duna Restoration Project](http://forum.kerbalspaceprogram.com/index.php?/topic/151632-0/)
-- [Kerbol Plus Remade](http://forum.kerbalspaceprogram.com/index.php?/topic/124505-0/)
 - [New Horizons](http://forum.kerbalspaceprogram.com/index.php?/topic/102776-0/)
 - [Outer Planets Mod](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-0/)
 - [Revamped Stock Solar System](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-0/)
@@ -23,6 +22,7 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 - [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php?/topic/119263-0/)
 - [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-0/)
 - [Sigma: Eve Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122481-0/)
+- [Stockalike Neptune](http://forum.kerbalspaceprogram.com/index.php?/topic/142085-0/)
 - [Uncharted Lands](http://forum.kerbalspaceprogram.com/index.php?/topic/120111-0/)
 
 
@@ -53,7 +53,7 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 | [Miranda](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Polta | [OPM](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-0/) |
 | [Titania](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Tylo | [Stock](http://wiki.kerbalspaceprogram.com/wiki/Tylo) |
 | [Sycorax](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/UranusSatellites) | Gobe | [RevSS](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-0/) |
-| [Neptune](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Neptune) | Sarin | [KPlus](http://forum.kerbalspaceprogram.com/index.php?/topic/124505-0/) |
+| [Neptune](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/Neptune) | Gas Giant | [GregroxTextures](http://forum.kerbalspaceprogram.com/index.php?/topic/142085-0/) |
 | [Proteus](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/NeptuneSatellites) | Priax | [OPM](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-0/) |
 | [Triton](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/NeptuneSatellites) | Plock | [OPM](http://forum.kerbalspaceprogram.com/index.php?/topic/93999-0/) |
 | [Nereid](https://github.com/Sigma88/Stockalike/tree/master/GameData/StockalikeSolarSystem/Configs/Bodies/NeptuneSatellites) | Oree | [NH](http://forum.kerbalspaceprogram.com/index.php?/topic/102776-0/) |
