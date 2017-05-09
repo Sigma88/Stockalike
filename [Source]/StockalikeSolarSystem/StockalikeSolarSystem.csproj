@@ -34,6 +34,7 @@
     <Compile Include="NameFixer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ColorFixer.cs" />
+    <Compile Include="ScienceFix.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
