@@ -1,27 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Collections;
-using System;
-using System.IO;
-using System.Reflection;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using System.Linq;
 using Random = System.Random;
+
 
 namespace SASSPlugin
 {
     [KSPAddon(KSPAddon.Startup.SpaceCentre, true)]
-    class KerbalRenamer : MonoBehaviour
+    class NameFixer : MonoBehaviour
     {
         static Random rnd = new Random();
 
         void Awake()
         {
             DontDestroyOnLoad(this);
-            GameEvents.onKerbalAdded.Add(new EventData<ProtoCrewMember>.OnEvent(OnKerbalAdded));
+            GameEvents.onKerbalAdded.Add(new EventData<ProtoCrewMember>.OnEvent(FixName));
         }
 
-        void OnKerbalAdded(ProtoCrewMember kerbal)
+        void FixName(ProtoCrewMember kerbal)
         {
             ConfigNode Names = GameDatabase.Instance.GetConfigNodes("StockalikeSolarSystemNames").FirstOrDefault();
             if (Names == null || !Names.HasNode("FULL") || !Names.HasNode("FIRST") || !Names.GetNode("FIRST").HasValues(new[] { "coolM", "coolF" }) || !Names.HasNode("LAST") || !Names.GetNode("LAST").HasValues(new[] { "cool", "boring" })) return;
@@ -30,7 +25,6 @@ namespace SASSPlugin
             string[] coolF = Names.GetNode("FIRST").GetValues("coolF");
             string[] lastCool = Names.GetNode("LAST").GetValues("cool");
             string[] lastBoring = Names.GetNode("LAST").GetValues("boring");
-
 
 
             if (specialNames.HasValue(kerbal.name.Replace(' ', '_')))
