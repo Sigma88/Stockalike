@@ -60,9 +60,7 @@ namespace SASSPlugin
                 }
 
                 MainText.Apply();
-
             }
-
 
 
             // Recolor Jupiter's Texture
@@ -102,7 +100,6 @@ namespace SASSPlugin
                     demand.texture = MainTex.name;
                 }
             }
-
 
 
             // Recolor Neptune's Texture
