@@ -18,7 +18,7 @@ namespace SASSPlugin
                 if (!config.HasNode("RESULTS") || !config.HasNode("STOCK_RESULTS") || !config.GetNode("STOCK_RESULTS").HasNode("RESULTS")) continue;
                 ConfigNode results = config.GetNode("RESULTS");
                 ConfigNode stockResults = config.GetNode("STOCK_RESULTS").GetNode("RESULTS");
-                string[] stockPlanets = new[] { "Sun", "Moho", "Eve", "Gilly", "Kerbin", "Mun", "Duna", "Ike", "Dres", "Jool", "Laythe", "Vall", "Tylo", "Bop", "Pol", "Eeloo" };
+                string[] stockPlanets = new[] { "Sun", "Moho", "Eve", "Gilly", "Kerbin", "Mun", "Minmus", "Duna", "Ike", "Dres", "Jool", "Laythe", "Vall", "Tylo", "Bop", "Pol", "Eeloo" };
 
                 foreach (string planet in stockPlanets)
                 {
