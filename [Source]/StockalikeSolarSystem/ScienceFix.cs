@@ -11,7 +11,7 @@ namespace SASSPlugin
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
     public class ScienceFix : MonoBehaviour
     {
-        void Start()
+        void Awake()
         {
             foreach (ConfigNode config in GameDatabase.Instance.GetConfigNodes("EXPERIMENT_DEFINITION"))
             {
