@@ -5,7 +5,7 @@ using Random = System.Random;
 
 namespace SASSPlugin
 {
-    [KSPAddon(KSPAddon.Startup.SpaceCentre, true)]
+    [KSPAddon(KSPAddon.Startup.MainMenu, true)]
     class NameFixer : MonoBehaviour
     {
         static Random rnd = new Random();
@@ -26,6 +26,7 @@ namespace SASSPlugin
             string[] lastCool = Names.GetNode("LAST").GetValues("cool");
             string[] lastBoring = Names.GetNode("LAST").GetValues("boring");
 
+            Debug.Log("SigmaLog: intercepted kerbal named = " + kerbal.name);
 
             if (specialNames.HasValue(kerbal.name.Replace(' ', '_')))
                 kerbal.ChangeName(specialNames.GetValue(kerbal.name.Replace(' ', '_')));
@@ -53,6 +54,8 @@ namespace SASSPlugin
                     kerbal.ChangeName(kerbal.name.Replace("Kerman", Pick(lastCool)));
                 else
                     kerbal.ChangeName(kerbal.name.Replace("Kerman", Pick(lastBoring)));
+
+                Debug.Log("SigmaLog: kerbal renamed to = " + kerbal.name);
 
                 // Veteran
                 if (coolFirst && coolLast)
