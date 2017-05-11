@@ -20,6 +20,11 @@ namespace SASSPlugin
                 ConfigNode stockResults = config.GetNode("STOCK_RESULTS").GetNode("RESULTS");
                 string[] stockPlanets = new[] { "Sun", "Moho", "Eve", "Gilly", "Kerbin", "Mun", "Minmus", "Duna", "Ike", "Dres", "Jool", "Laythe", "Vall", "Tylo", "Bop", "Pol", "Eeloo" };
 
+                foreach (ConfigNode.Value def in results.values)
+                {
+                    if (def.name.StartsWith("Polta"))
+                        def.name = "OPM" + def.name;
+                }
                 foreach (string planet in stockPlanets)
                 {
                     results.RemoveValuesStartWith(planet);
