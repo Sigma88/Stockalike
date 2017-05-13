@@ -52,7 +52,7 @@ namespace SASSPlugin
                 DestroyObject(this);
             }
         }
-        
+
         void FixScreens(Texture2D[] tex)
         {
             for (int i = 0; i < tex.Length; i++)
@@ -60,23 +60,23 @@ namespace SASSPlugin
                 if (tex[i].name == "mainMenuBg")
                     tex[i] = AddLogo();
                 else if (tex[i].name == "WernherVonKerman")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 808, 98, 0.4f); // OK
                 else if (tex[i].name == "KerbalRecruit")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 934, 239, 0.4f); // OK
                 else if (tex[i].name == "kerbalspaceodyssey-v2")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 382, 395, 0.5f); // OK
                 else if (tex[i].name == "KerbalGroundCrew")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 486, 373, 0.455f); // OK
                 else if (tex[i].name == "KerbalMechanic")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 554, 414, 0.4f); // OK
                 else if (tex[i].name == "GeneKerman")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 746, 148, 0.5f); // OK
                 else if (tex[i].name == "BobKerman")
                     tex[i] = Recolor(tex[i], 1062, 296, 0.5f); // OK
                 else if (tex[i].name == "BillKerman")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 809, 242, 0.4f); // OK
                 else if (tex[i].name == "JebediahKerman")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f);
+                    tex[i] = Recolor(tex[i], 963, 294, 0.5f); // OK
             }
         }
 
@@ -110,13 +110,14 @@ namespace SASSPlugin
             Texture2D mask = RecolorMasks.FirstOrDefault(t => t.name == (texture.name + "_RecolorMask"));
             Texture2D tex = Utility.CreateReadable(texture);
 
-            for (int x = 0; x < mask.width && x + dx < tex.width; x++)
+            for (int x = 0; (x < mask.width) && (x + dx < tex.width); x++)
             {
-                for (int y = 0; y < mask.height && y + dy < tex.height; x++)
+                for (int y = 0; (y < mask.height) && (y + dy < tex.height); y++)
                 {
-                    Color color = mask.GetPixel(x, y);
-                    if (color == Color.black) continue;
-                    tex.SetPixel(x + dx, y + dy, Lerp(tex.GetPixel(x + dx, y + dy), hue > 0 ? hue : color.maxColorComponent));
+                    Color maskColor = mask.GetPixel(x, y);
+                    if (maskColor == Color.black) continue;
+                    Color recolored = Lerp(tex.GetPixel(x + dx, y + dy), hue);
+                    tex.SetPixel(x + dx, y + dy, recolored);
                 }
             }
 
@@ -127,6 +128,7 @@ namespace SASSPlugin
 
         Color Lerp(Color color, float hue)
         {
+            Debug.Log("Sigmalog: " + color + ", " + hue);
             float min = Math.Min(Math.Min(color.r, color.g), color.b);
             color =
             new Color
@@ -135,9 +137,10 @@ namespace SASSPlugin
                 (color.maxColorComponent - min) * hue + min,
                 min
             );
+            Debug.Log("Sigmalog: " + color);
             return color;
         }
-        
+
         Texture2D LoadPNG(string filePath)
         {
             Texture2D tex = null;
