@@ -1,36 +1,31 @@
-﻿using UnityEngine;
-using Kopernicus;
-using Kopernicus.Components;
-using Kopernicus.Configuration;
-using Kopernicus.OnDemand;
-using System.Text;
-using System;
-using System.Linq;
-using KSP.UI.Screens;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using UnityEngine;
+using Kopernicus;
 using Random = System.Random;
 
 
 namespace SASSPlugin
 {
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
-    class LoadingTips : MonoBehaviour
+    class FixLoadingScreen : MonoBehaviour
     {
         List<LoadingScreen.LoadingScreenState> LoadingScreens = new List<LoadingScreen.LoadingScreenState>();
-        List<Texture2D> RecolorMasks = new List<Texture2D>();
+
+        string path = "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
+        List<string> names = new List<string>(new[] { "WernherVonKerman", "KerbalRecruit", "kerbalspaceodyssey-v2", "KerbalGroundCrew", "KerbalMechanic", "GeneKerman", "BobKerman", "BillKerman", "JebediahKerman" });
+        List<string> missing = new List<string>();
+
         Random rnd = new Random();
         bool skip = false;
+        bool skip2 = false;
+        bool export = false;
 
 
         void Awake()
         {
-            string[] masks = new[] { "WernherVonKerman", "KerbalRecruit", "kerbalspaceodyssey-v2", "KerbalGroundCrew", "KerbalMechanic", "GeneKerman", "BobKerman", "BillKerman", "JebediahKerman" };
-            foreach (string mask in masks)
-            {
-                RecolorMasks.Add(LoadPNG(KSPUtil.ApplicationRootPath + "GameData/StockalikeSolarSystem/Textures/LoadingScreen/Fixes/" + mask + ".png"));
-                RecolorMasks.Last().name = mask + "_RecolorMask";
-            }
             DontDestroyOnLoad(this);
         }
 
@@ -38,54 +33,102 @@ namespace SASSPlugin
         {
             if (!skip && LoadingScreen.Instance != null)
             {
+                CheckFiles(names);
                 LoadingScreens = LoadingScreen.Instance.Screens;
 
                 foreach (var screen in LoadingScreens)
                 {
-                    FixScreens(screen.screens);
+                    screen.screens = FixScreens(screen.screens);
                 }
 
                 skip = true;
             }
+
+            if (skip && !skip2 && missing.Count > 0)
+            {
+                Texture2D check = Utility.CreateReadable(Resources.FindObjectsOfTypeAll<Texture2D>().FirstOrDefault(t => missing.Contains(t.name)));
+                if (check != null)
+                {
+                    skip2 = check.GetPixel(check.width / 2, check.height / 2).a > 0;
+                    export = skip2;
+                }
+            }
+
+            if (export)
+            {
+                foreach (string name in missing)
+                {
+                    if (name == "WernherVonKerman")
+                        Recolor(name, 808, 396, 0.4f);
+                    else if (name == "KerbalRecruit")
+                        Recolor(name, 934, 346, 0.4f);
+                    else if (name == "kerbalspaceodyssey-v2")
+                        Recolor(name, 382, 458, 0.5f);
+                    else if (name == "KerbalGroundCrew")
+                        Recolor(name, 486, 321, 0.455f);
+                    else if (name == "KerbalMechanic")
+                        Recolor(name, 554, 238, 0.4f);
+                    else if (name == "GeneKerman")
+                        Recolor(name, 746, 347, 0.5f);
+                    else if (name == "BobKerman")
+                        Recolor(name, 1062, 524, 0.5f);
+                    else if (name == "BillKerman")
+                        Recolor(name, 809, 460, 0.4f);
+                    else if (name == "JebediahKerman")
+                        Recolor(name, 963, 530, 0.5f);
+                }
+
+                export = false;
+            }
+
             if (HighLogic.LoadedScene == GameScenes.MAINMENU)
             {
                 DestroyObject(this);
             }
         }
 
-        void FixScreens(Texture2D[] tex)
+        void CheckFiles(List<string> names)
         {
-            for (int i = 0; i < tex.Length; i++)
+            foreach (string name in names.ToArray())
             {
-                if (tex[i].name == "mainMenuBg")
-                    tex[i] = AddLogo();
-                else if (tex[i].name == "WernherVonKerman")
-                    tex[i] = Recolor(tex[i], 808, 98, 0.4f); // OK
-                else if (tex[i].name == "KerbalRecruit")
-                    tex[i] = Recolor(tex[i], 934, 239, 0.4f); // OK
-                else if (tex[i].name == "kerbalspaceodyssey-v2")
-                    tex[i] = Recolor(tex[i], 382, 395, 0.5f); // OK
-                else if (tex[i].name == "KerbalGroundCrew")
-                    tex[i] = Recolor(tex[i], 486, 373, 0.455f); // OK
-                else if (tex[i].name == "KerbalMechanic")
-                    tex[i] = Recolor(tex[i], 554, 414, 0.4f); // OK
-                else if (tex[i].name == "GeneKerman")
-                    tex[i] = Recolor(tex[i], 746, 148, 0.5f); // OK
-                else if (tex[i].name == "BobKerman")
-                    tex[i] = Recolor(tex[i], 1062, 296, 0.5f); // OK
-                else if (tex[i].name == "BillKerman")
-                    tex[i] = Recolor(tex[i], 809, 242, 0.4f); // OK
-                else if (tex[i].name == "JebediahKerman")
-                    tex[i] = Recolor(tex[i], 963, 294, 0.5f); // OK
+                if (!File.Exists(KSPUtil.ApplicationRootPath + path + "Recolored/" + name + ".png"))
+                {
+                    names.Remove(name);
+                    missing.Add(name);
+                }
             }
         }
 
-        Texture2D AddLogo()
+        Texture2D[] FixScreens(Texture2D[] screens)
+        {
+            List<Texture2D> list = new List<Texture2D>();
+
+            foreach (Texture2D texture in screens)
+            {
+                if (texture.name == "mainMenuBg")
+                {
+                    AddLogo(list);
+                }
+                else
+                {
+                    Texture2D custom = LoadPNG(path + "Recolored/" + texture.name + ".png");
+                    if (custom != null)
+                        list.Add(custom);
+                }
+            }
+
+            if (list.Count > 0)
+                screens = list.ToArray();
+
+            return screens;
+        }
+
+        void AddLogo(List<Texture2D> list)
         {
             string[] planets = new[] { "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" };
-            Texture2D tex = LoadPNG(KSPUtil.ApplicationRootPath + "GameData/StockalikeSolarSystem/Textures/LoadingScreen/Planets/" + planets[rnd.Next(planets.Length)] + ".png");
 
-            Color[] logo = LoadPNG(KSPUtil.ApplicationRootPath + "GameData/StockalikeSolarSystem/Textures/LoadingScreen/Fixes/SASSlogo.png").GetPixels();
+            Texture2D tex = LoadPNG(KSPUtil.ApplicationRootPath + path + "Planets/" + planets[rnd.Next(planets.Length)] + ".png");
+            Color[] logo = LoadPNG(KSPUtil.ApplicationRootPath + path + "Fixes/SASSlogo.png").GetPixels();
 
             int x = -1;
             int y = 0;
@@ -101,34 +144,38 @@ namespace SASSPlugin
                 Color color = new Color(logo[p].r, logo[p].g, logo[p].b, 1);
                 tex.SetPixel(x, y, Color.Lerp(tex.GetPixel(x, y), color, logo[p].a));
             }
+
             tex.Apply();
-            return tex;
+            list.Add(tex);
         }
 
-        Texture2D Recolor(Texture2D texture, int dx, int dy, float hue = 0)
+        void Recolor(string name, int dx, int dy, float hue = 0)
         {
-            Texture2D mask = RecolorMasks.FirstOrDefault(t => t.name == (texture.name + "_RecolorMask"));
-            Texture2D tex = Utility.CreateReadable(texture);
+            Texture2D mask = LoadPNG(KSPUtil.ApplicationRootPath + path + "Fixes/" + name + ".png");
+            Texture2D tex = Utility.CreateReadable(Resources.FindObjectsOfTypeAll<Texture2D>().FirstOrDefault(t => t.name == name));
+            if (mask == null || tex == null) return;
+
 
             for (int x = 0; (x < mask.width) && (x + dx < tex.width); x++)
             {
                 for (int y = 0; (y < mask.height) && (y + dy < tex.height); y++)
                 {
                     Color maskColor = mask.GetPixel(x, y);
-                    if (maskColor == Color.black) continue;
+                    if (maskColor.maxColorComponent == 0) continue;
                     Color recolored = Lerp(tex.GetPixel(x + dx, y + dy), hue);
                     tex.SetPixel(x + dx, y + dy, recolored);
                 }
             }
 
-            tex.Apply();
+            byte[] png = tex.EncodeToPNG();
 
-            return tex;
+            Directory.CreateDirectory(KSPUtil.ApplicationRootPath + path + "Recolored");
+            File.WriteAllBytes(KSPUtil.ApplicationRootPath + path + "Recolored/TEMP.png", png);
+            File.Move(KSPUtil.ApplicationRootPath + path + "Recolored/TEMP.png", KSPUtil.ApplicationRootPath + path + "Recolored/" + name + ".png");
         }
 
         Color Lerp(Color color, float hue)
         {
-            Debug.Log("Sigmalog: " + color + ", " + hue);
             float min = Math.Min(Math.Min(color.r, color.g), color.b);
             color =
             new Color
@@ -137,7 +184,6 @@ namespace SASSPlugin
                 (color.maxColorComponent - min) * hue + min,
                 min
             );
-            Debug.Log("Sigmalog: " + color);
             return color;
         }
 
