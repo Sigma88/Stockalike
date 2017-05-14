@@ -38,6 +38,9 @@ namespace SASSPlugin
 
                 foreach (var screen in LoadingScreens)
                 {
+                    string[] newTips = File.ReadAllLines(KSPUtil.ApplicationRootPath + "GameData/StockalikeSolarSystem/Configs/Extras/LoadingTips.txt").ToList().Where(s => !string.IsNullOrEmpty(s)).ToArray();
+                    if (screen.tips.Length > 1 && newTips != null && newTips.Length > 0)
+                        screen.tips = newTips;
                     screen.screens = FixScreens(screen.screens);
                 }
 
