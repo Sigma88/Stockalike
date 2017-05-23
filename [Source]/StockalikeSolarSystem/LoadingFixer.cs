@@ -10,7 +10,64 @@ using Random = System.Random;
 namespace SASSPlugin
 {
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
-    class FixLoadingScreen : MonoBehaviour
+    public class FixLoadingScreen : MonoBehaviour
+    {
+        public static NewLoadingScreen newLoadingScreen { get; set; }
+
+        void Awake()
+        {
+            bool useSASSLoadingScreen = true;
+
+            foreach (ConfigNode Settings in GameDatabase.Instance.GetConfigNodes("SASSLoadingScreen"))
+            {
+                if (Settings.HasValue("useSASSLoadingScreen"))
+                {
+                    NumericParser<bool> userSetting = new NumericParser<bool>();
+                    userSetting.SetFromString(Settings.GetValue("useSASSLoadingScreen"));
+                    if (userSetting.value == false)
+                    {
+                        useSASSLoadingScreen = false;
+                    }
+                    if (userSetting.value == true)
+                    {
+                        useSASSLoadingScreen = true;
+                        break;
+                    }
+                }
+            }
+
+            if (useSASSLoadingScreen)
+            {
+                newLoadingScreen = new SASSLoadingScreen();
+            }
+
+            DontDestroyOnLoad(this);
+        }
+
+        void Update()
+        {
+            if (newLoadingScreen == null)
+            {
+                DestroyObject(this);
+            }
+            else
+            {
+                newLoadingScreen.UpdateScreens();
+            }
+
+            if (HighLogic.LoadedScene == GameScenes.MAINMENU)
+            {
+                DestroyObject(this);
+            }
+        }
+    }
+
+    public interface NewLoadingScreen
+    {
+        void UpdateScreens();
+    }
+
+    public class SASSLoadingScreen : NewLoadingScreen
     {
         List<LoadingScreen.LoadingScreenState> LoadingScreens = new List<LoadingScreen.LoadingScreenState>();
 
@@ -23,13 +80,12 @@ namespace SASSPlugin
         bool skip2 = false;
         bool export = false;
 
-
-        void Awake()
+        public virtual void UpdateScreens()
         {
-            DontDestroyOnLoad(this);
+            SASSScreens();
         }
 
-        void Update()
+        public void SASSScreens()
         {
             if (!skip && LoadingScreen.Instance != null)
             {
@@ -82,11 +138,6 @@ namespace SASSPlugin
                 }
 
                 export = false;
-            }
-
-            if (HighLogic.LoadedScene == GameScenes.MAINMENU)
-            {
-                DestroyObject(this);
             }
         }
 

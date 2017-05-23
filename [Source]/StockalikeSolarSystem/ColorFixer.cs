@@ -136,6 +136,7 @@ namespace SASSPlugin
                 }
             }
         }
+
         void LateUpdate()
         {
             if (HighLogic.LoadedScene == GameScenes.SPACECENTER)
