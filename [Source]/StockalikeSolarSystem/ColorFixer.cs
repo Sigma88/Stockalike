@@ -21,7 +21,7 @@ namespace SASSPlugin
 
         void IParserEventSubscriber.PostApply(ConfigNode node)
         {
-            if (Loader.currentBody.name == "Saturn")
+            if (Loader.currentBody.name == "Saturn" || Loader.currentBody.name == "Sool")
             {
                 Texture2D ringtext = Utility.CreateReadable(Loader.currentBody.rings.First().ring.texture);
                 ringtext.name = "SaturnRingRecolor";
@@ -65,7 +65,7 @@ namespace SASSPlugin
 
             // Recolor Jupiter's Texture
 
-            CelestialBody jupiter = FlightGlobals.Bodies.First(b => b.transform.name == "Jupiter");
+            CelestialBody jupiter = FlightGlobals.Bodies.First(b => b.transform.name == "Jupiter" || b.transform.name == "Jool");
 
             if (jupiter != null)
             {
@@ -104,7 +104,7 @@ namespace SASSPlugin
 
             // Recolor Neptune's Texture
 
-            CelestialBody neptune = FlightGlobals.Bodies.First(b => b.transform.name == "Neptune");
+            CelestialBody neptune = FlightGlobals.Bodies.First(b => b.transform.name == "Neptune" || b.transform.name == "Nool");
             if (neptune != null)
             {
                 Texture2D MainTex = Utility.CreateReadable(neptune.scaledBody.GetComponent<Renderer>().material.GetTexture("_MainTex") as Texture2D);
@@ -152,14 +152,14 @@ namespace SASSPlugin
         void Start()
         {
             Texture2D jupiter = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "JupiterRecolor");
-            RDPlanetListItemContainer itemJ = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Jupiter");
+            RDPlanetListItemContainer itemJ = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Jupiter" || i.name == "Jool");
 
             if (jupiter != null && itemJ != null)
                 itemJ.planet.GetComponent<Renderer>().material.mainTexture = jupiter;
 
 
             Texture2D neptune = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "NeptuneRecolor");
-            RDPlanetListItemContainer itemN = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Neptune");
+            RDPlanetListItemContainer itemN = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Neptune" || i.name == "Nool");
 
             if (neptune != null && itemN != null)
                 itemN.planet.GetComponent<Renderer>().material.mainTexture = neptune;
