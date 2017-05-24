@@ -1,3 +1,21 @@
+**v0.5.0**
+
+- Added required mods:
+    > Sigma SciDefRenamer
+    > Texture Replacer
+    > Human Colored Faces
+- Fixed useTheInName
+- Fixed RealAtmospheres
+- Added science for all bodies
+- Changed the appearance of the Sun
+- Added kerbalized names for asteroids
+- Changed orbital period of Earth to be 365.25 days
+- Added custom kerbal names generator
+- Added custom loading screens
+- Added custom sun flare
+- Added custom flags
+
+
 **v0.4.0**
 
 - Removed required mods:
