@@ -13,41 +13,58 @@ namespace SASSPlugin
     public class FixLoadingScreen : MonoBehaviour
     {
         string path = "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
+        List<string> missing = new List<string>();
 
         public static NewLoadingScreen newLoadingScreen { get; set; }
         public static bool useSASSLoadingScreen = true;
+        public static bool keepStockLogo = false;
+        public static bool keepGreenKerbals = false;
+        public static bool recolorKerbals = false; // true by default, false if keepGreenKerbals == true
+        public static int LogoChance = 1;
+        public static int KerbalsChance = 4;
 
-        List<string> missing = new List<string>();
         bool skip = false;
         bool skip2 = false;
         bool export = false;
 
         void Awake()
         {
-            foreach (ConfigNode Settings in GameDatabase.Instance.GetConfigNodes("SASSLoadingScreen"))
-            {
-                if (Settings.HasValue("useSASSLoadingScreen"))
-                {
-                    NumericParser<bool> userSetting = new NumericParser<bool>();
-                    userSetting.SetFromString(Settings.GetValue("useSASSLoadingScreen"));
-                    if (userSetting.value == false)
-                    {
-                        useSASSLoadingScreen = false;
-                    }
-                    if (userSetting.value == true)
-                    {
-                        useSASSLoadingScreen = true;
-                        break;
-                    }
-                }
-            }
-
+            useSASSLoadingScreen = GetSetting("useSASSLoadingScreen", true);
             if (useSASSLoadingScreen)
             {
+                keepStockLogo = GetSetting("keepStockLogo", false);
+                keepGreenKerbals = GetSetting("keepGreenKerbals", false);
+                if (!keepGreenKerbals)
+                    recolorKerbals = GetSetting("recolorKerbals", true);
+
                 newLoadingScreen = new SASSLoadingScreen();
             }
 
             DontDestroyOnLoad(this);
+        }
+
+        bool GetSetting(string name, bool Default)
+        {
+            bool output = Default;
+
+            foreach (ConfigNode Settings in GameDatabase.Instance.GetConfigNodes("SASSLoadingScreen"))
+            {
+                if (Settings.HasValue(name))
+                {
+                    NumericParser<bool> userSetting = new NumericParser<bool>();
+                    userSetting.SetFromString(Settings.GetValue(name));
+                    if (userSetting.value == Default)
+                    {
+                        return Default;
+                    }
+                    else
+                    {
+                        output = !Default;
+                    }
+                }
+            }
+
+            return output;
         }
 
         void Update()
@@ -58,7 +75,7 @@ namespace SASSPlugin
                 skip = true;
             }
 
-            if (skip && useSASSLoadingScreen)
+            if (skip && recolorKerbals)
             {
                 UpdateSASS();
             }
@@ -158,11 +175,13 @@ namespace SASSPlugin
     {
         public static List<string> names = new List<string>(new[] { "WernherVonKerman", "KerbalRecruit", "kerbalspaceodyssey-v2", "KerbalGroundCrew", "KerbalMechanic", "GeneKerman", "BobKerman", "BillKerman", "JebediahKerman" });
         string path = "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
+        static Texture2D StockLogo = null;
 
         Random rnd = new Random();
 
         public virtual void UpdateScreens(LoadingScreen.LoadingScreenState screen)
         {
+            StockLogo = screen.screens.FirstOrDefault(t => t.name == "mainMenuBg");
             List<string> newTips = SASSTips();
             List<Texture2D> newScreens = SASSScreens();
 
@@ -188,14 +207,23 @@ namespace SASSPlugin
         {
             List<Texture2D> list = new List<Texture2D>();
 
-            AddLogo(list);
+            bool addKerbals = (FixLoadingScreen.recolorKerbals || FixLoadingScreen.keepGreenKerbals) && (rnd.Next(FixLoadingScreen.LogoChance + FixLoadingScreen.KerbalsChance) < FixLoadingScreen.KerbalsChance);
 
-            foreach (string name in names)
+            if (addKerbals)
             {
-                Texture2D custom = PNGtools.Load(path + "Recolored/" + name + ".png");
-                if (custom != null)
-                    list.Add(custom);
+                if (FixLoadingScreen.keepGreenKerbals)
+                    return new List<Texture2D>();
+
+                foreach (string name in names)
+                {
+                    Texture2D custom = PNGtools.Load(path + "Recolored/" + name + ".png");
+                    if (custom != null)
+                        list.Add(custom);
+                }
             }
+
+            if (list.Count == 0)
+                AddLogo(list);
 
             if (list.Count > 0)
                 return list;
@@ -205,10 +233,19 @@ namespace SASSPlugin
 
         void AddLogo(List<Texture2D> list)
         {
-            string[] planets = new[] { "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" };
+            List<string> planets = new[] { "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" }.ToList();
+            if (FixLoadingScreen.keepStockLogo)
+                planets.Add("StockLogo");
 
-            Texture2D tex = PNGtools.Load(KSPUtil.ApplicationRootPath + path + "Planets/" + planets[rnd.Next(planets.Length)] + ".png");
-            Color[] logo = PNGtools.Load(KSPUtil.ApplicationRootPath + path + "Fixes/SASSlogo.png").GetPixels();
+            Texture2D tex = PNGtools.Load(KSPUtil.ApplicationRootPath + path + "Planets/" + planets[rnd.Next(planets.Count)] + ".png");
+            Color[] logo = PNGtools.Load(KSPUtil.ApplicationRootPath + path + "Fixes/SASSlogo.png", false).GetPixels();
+
+            if (tex == null || logo.Length == 0)
+            {
+                if (StockLogo != null)
+                    list.Add(StockLogo);
+                return;
+            }
 
             int x = -1;
             int y = 0;
@@ -232,7 +269,7 @@ namespace SASSPlugin
 
     public static class PNGtools
     {
-        public static Texture2D Load(string filePath)
+        public static Texture2D Load(string filePath, bool nullable = true)
         {
             Texture2D tex = null;
             byte[] fileData;
@@ -243,6 +280,10 @@ namespace SASSPlugin
                 tex = new Texture2D(2, 2);
                 tex.LoadImage(fileData);
             }
+
+            if (tex == null && !nullable)
+                return new Texture2D(0, 0);
+
             return tex;
         }
 
