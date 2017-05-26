@@ -122,6 +122,14 @@ namespace SASSPlugin
                         Recolor(name, 809, 460, 0.4f);
                     else if (name == "JebediahKerman")
                         Recolor(name, 963, 530, 0.5f);
+                    else if (name == "bumpfist")
+                        Recolor(name, 434, 394, 0.331f);
+                    else if (name == "loudandclear")
+                        Recolor(name, 841, 576, 0.331f);
+                    else if (name == "landing")
+                        Recolor(name, 477, 348, 0.331f);
+                    else if (name == "apollo11")
+                        PNGtools.Export(new Texture2D(1, 1), KSPUtil.ApplicationRootPath + path + "Recolored", name);
                 }
 
                 export = false;
@@ -158,11 +166,7 @@ namespace SASSPlugin
                 }
             }
 
-            byte[] png = tex.EncodeToPNG();
-
-            Directory.CreateDirectory(KSPUtil.ApplicationRootPath + path + "Recolored");
-            File.WriteAllBytes(KSPUtil.ApplicationRootPath + path + "Recolored/TEMP.png", png);
-            File.Move(KSPUtil.ApplicationRootPath + path + "Recolored/TEMP.png", KSPUtil.ApplicationRootPath + path + "Recolored/" + name + ".png");
+            PNGtools.Export(tex, KSPUtil.ApplicationRootPath + path + "Recolored/", name);
         }
     }
 
@@ -173,7 +177,7 @@ namespace SASSPlugin
 
     public class SASSLoadingScreen : NewLoadingScreen
     {
-        public static List<string> names = new List<string>(new[] { "WernherVonKerman", "KerbalRecruit", "kerbalspaceodyssey-v2", "KerbalGroundCrew", "KerbalMechanic", "GeneKerman", "BobKerman", "BillKerman", "JebediahKerman" });
+        public static List<string> names = new List<string>(new[] { "WernherVonKerman", "KerbalRecruit", "kerbalspaceodyssey-v2", "KerbalGroundCrew", "KerbalMechanic", "GeneKerman", "BobKerman", "BillKerman", "JebediahKerman", "bumpfist", "loudandclear", "landing", "apollo11" });
         string path = "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
         static Texture2D StockLogo = null;
 
@@ -181,7 +185,7 @@ namespace SASSPlugin
 
         public virtual void UpdateScreens(LoadingScreen.LoadingScreenState screen)
         {
-            StockLogo = screen.screens.FirstOrDefault(t => t.name == "mainMenuBg");
+            StockLogo = (Texture2D)screen.screens.FirstOrDefault(t => t.name == "mainMenuBg");
             List<string> newTips = SASSTips();
             List<Texture2D> newScreens = SASSScreens();
 
@@ -217,6 +221,10 @@ namespace SASSPlugin
                 foreach (string name in names)
                 {
                     Texture2D custom = PNGtools.Load(path + "Recolored/" + name + ".png");
+
+                    if (custom != null && name == "apollo11")
+                        custom = Resources.FindObjectsOfTypeAll<Texture2D>().FirstOrDefault(t => t.name == name);
+
                     if (custom != null)
                         list.Add(custom);
                 }
@@ -298,6 +306,20 @@ namespace SASSPlugin
                 min
             );
             return color;
+        }
+
+        public static void Export(Texture2D texture, string folder, string name)
+        {
+            if (texture == null || string.IsNullOrEmpty(folder) || string.IsNullOrEmpty(name)) return;
+
+            if (folder.EndsWith("/"))
+                folder = folder.Substring(0, folder.Length - 1);
+
+            byte[] png = texture.EncodeToPNG();
+
+            Directory.CreateDirectory(folder);
+            File.WriteAllBytes(folder + "/TEMP.png", png);
+            File.Move(folder + "/TEMP.png", folder + "/" + name + ".png");
         }
     }
 }
