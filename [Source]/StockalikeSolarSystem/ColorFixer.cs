@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Kopernicus;
-using Kopernicus.Components;
 using Kopernicus.Configuration;
 using Kopernicus.OnDemand;
 using System.Text;
