@@ -12,7 +12,7 @@ namespace SASSPlugin
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
     public class FixLoadingScreen : MonoBehaviour
     {
-        string path = "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
+        string path = KSPUtil.ApplicationRootPath + "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
         List<string> missing = new List<string>();
 
         public static NewLoadingScreen newLoadingScreen { get; set; }
@@ -129,7 +129,7 @@ namespace SASSPlugin
                     else if (name == "landing")
                         Recolor(name, 477, 348, 0.331f);
                     else if (name == "apollo11")
-                        PNGtools.Export(new Texture2D(1, 1), KSPUtil.ApplicationRootPath + path + "Recolored", name);
+                        Recolor(name);
                 }
 
                 export = false;
@@ -140,7 +140,7 @@ namespace SASSPlugin
         {
             foreach (string name in names.ToArray())
             {
-                if (!File.Exists(KSPUtil.ApplicationRootPath + path + "Recolored/" + name + ".png"))
+                if (!File.Exists(path + "Recolored/" + name + ".png"))
                 {
                     names.Remove(name);
                     missing.Add(name);
@@ -148,13 +148,21 @@ namespace SASSPlugin
             }
         }
 
-        void Recolor(string name, int dx, int dy, float hue = 0)
+        void Recolor(string name, int dx = 0, int dy = 0, float hue = 0)
         {
-            Texture2D mask = PNGtools.Load(KSPUtil.ApplicationRootPath + path + "Fixes/" + name + ".png");
             Texture2D tex = Utility.CreateReadable(Resources.FindObjectsOfTypeAll<Texture2D>().FirstOrDefault(t => t.name == name));
-            if (mask == null || tex == null) return;
+            if (tex == null) return;
 
+            if (name == "apollo11")
+            {
+                SmallLogo(tex, name);
+                return;
+            }
 
+            Texture2D mask = PNGtools.Load(path + "Fixes/" + name + ".png");
+            if (mask == null) return;
+
+            // Change color
             for (int x = 0; (x < mask.width) && (x + dx < tex.width); x++)
             {
                 for (int y = 0; (y < mask.height) && (y + dy < tex.height); y++)
@@ -166,7 +174,23 @@ namespace SASSPlugin
                 }
             }
 
-            PNGtools.Export(tex, KSPUtil.ApplicationRootPath + path + "Recolored/", name);
+            SmallLogo(tex, name);
+        }
+
+        void SmallLogo(Texture2D texture, string name)
+        {
+            Texture2D smallLogo = null;
+            if (texture.height == 1280)
+                smallLogo = PNGtools.Load(path + "Fixes/SASSLogoSmall.png");
+            else
+                smallLogo = PNGtools.Load(path + "Fixes/SASSLogoXSmall.png");
+
+            if (smallLogo != null)
+            {
+                PNGtools.Overlay(texture, smallLogo, texture.width - (int)(46d / 768d * texture.height) - smallLogo.width, texture.height - (int)(43d / 768d * texture.height) - smallLogo.height);
+            }
+
+            PNGtools.Export(texture, path + "Recolored/", name);
         }
     }
 
@@ -178,7 +202,7 @@ namespace SASSPlugin
     public class SASSLoadingScreen : NewLoadingScreen
     {
         public static List<string> names = new List<string>(new[] { "WernherVonKerman", "KerbalRecruit", "kerbalspaceodyssey-v2", "KerbalGroundCrew", "KerbalMechanic", "GeneKerman", "BobKerman", "BillKerman", "JebediahKerman", "bumpfist", "loudandclear", "landing", "apollo11" });
-        string path = "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
+        string path = KSPUtil.ApplicationRootPath + "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
         static Texture2D StockLogo = null;
 
         Random rnd = new Random();
@@ -221,12 +245,21 @@ namespace SASSPlugin
                 foreach (string name in names)
                 {
                     Texture2D custom = PNGtools.Load(path + "Recolored/" + name + ".png");
+                    if (custom == null) continue;
 
-                    if (custom != null && name == "apollo11")
-                        custom = Resources.FindObjectsOfTypeAll<Texture2D>().FirstOrDefault(t => t.name == name);
+                    if (name == "apollo11")
+                    {
+                        Texture2D pole = PNGtools.Load(path + "Fixes/pole.png");
+                        Texture2D flag = PNGtools.Load(path + "Fixes/flags.png");
+                        if (pole != null && flag != null)
+                        {
+                            PNGtools.Overlay(custom, pole, 1844, 269);
+                            PNGtools.Overlay(custom, flag.GetPixels(rnd.Next(flag.width / 42) * 42, 0, 42, 26), 42, 1850, 527);
+                            custom.Apply();
+                        }
+                    }
 
-                    if (custom != null)
-                        list.Add(custom);
+                    list.Add(custom);
                 }
             }
 
@@ -245,8 +278,8 @@ namespace SASSPlugin
             if (FixLoadingScreen.keepStockLogo)
                 planets.Add("StockLogo");
 
-            Texture2D tex = PNGtools.Load(KSPUtil.ApplicationRootPath + path + "Planets/" + planets[rnd.Next(planets.Count)] + ".png");
-            Color[] logo = PNGtools.Load(KSPUtil.ApplicationRootPath + path + "Fixes/SASSlogo.png", false).GetPixels();
+            Texture2D tex = PNGtools.Load(path + "Planets/" + planets[rnd.Next(planets.Count)] + ".png");
+            Color[] logo = PNGtools.Load(path + "Fixes/SASSlogo.png", false).GetPixels();
 
             if (tex == null || logo.Length == 0)
             {
@@ -315,11 +348,35 @@ namespace SASSPlugin
             if (folder.EndsWith("/"))
                 folder = folder.Substring(0, folder.Length - 1);
 
-            byte[] png = texture.EncodeToPNG();
-
             Directory.CreateDirectory(folder);
+
+            if (File.Exists(folder + "/" + name + ".png"))
+                File.Move(folder + "/" + name + ".png", folder + "/TEMP.png");
+
+            byte[] png = texture.EncodeToPNG();
             File.WriteAllBytes(folder + "/TEMP.png", png);
+
             File.Move(folder + "/TEMP.png", folder + "/" + name + ".png");
+        }
+
+        public static void Overlay(Texture2D back, Texture2D front, int x = 0, int y = 0)
+        {
+            if (back != null && front != null)
+                Overlay(back, front.GetPixels(), front.width, x, y);
+        }
+
+        public static void Overlay(Texture2D back, Color[] front, int blockWidth, int x = 0, int y = 0)
+        {
+            for (int i = 0; i < front.Length; i++)
+            {
+                if (x + i % blockWidth < back.width && y + i / blockWidth < back.height)
+                {
+                    Color color = back.GetPixel(x + i % blockWidth, y + i / blockWidth);
+                    color = Color.Lerp(color, front[i], front[i].a);
+                    color.a = 1;
+                    back.SetPixel(x + i % blockWidth, y + i / blockWidth, color);
+                }
+            }
         }
     }
 }
