@@ -2,6 +2,7 @@
 
 - Updated to KSP 1.3.0 and Kopernicus 1.3.0-1
 - Added required mods:
+    > Kronometer
     > Sigma SciDefRenamer
     > Texture Replacer
     > Human Colored Faces
