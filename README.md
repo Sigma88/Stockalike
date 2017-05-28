@@ -14,7 +14,7 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 - [**ModuleManager**](http://forum.kerbalspaceprogram.com/index.php?/topic/50533-0/)
 - [**Kopernicus**](http://forum.kerbalspaceprogram.com/index.php?/topic/140580-0/)
 - [**Sigma Dimensions**](http://forum.kerbalspaceprogram.com/index.php?/topic/126548-0/)
-- [***Kronometer***](https://github.com/StollD/Kronometer/releases/latest/)
+- [***Kronometer***](http://forum.kerbalspaceprogram.com/index.php?/topic/161218-0/)
 - [***Sigma SciDefRenamer***](http://forum.kerbalspaceprogram.com/index.php?/topic/160151-0/)
 - [***Texture Replacer***](https://github.com/RangeMachine/TextureReplacer/releases/tag/v2.5.4/)
 - [***Human Colored Faces***](https://mods.curse.com/ksp-mods/kerbal/241870-human-colored-faces-kerbal-head-textures-for-rss/)
