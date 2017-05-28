@@ -1,5 +1,5 @@
 {
-	"NAME": "Stock-alike Solar System",
+	"NAME": "<b><color=#7090FF>Stock-alike Solar System</color></b>",
 	"URL": "https://raw.githubusercontent.com/Sigma88/Stockalike/master/GameData/StockalikeSolarSystem/Configs/StockalikeSolarSystem.version",
 	"DOWNLOAD": "http://forum.kerbalspaceprogram.com/index.php?/topic/131405-0/",
 	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/Sigma88/Stockalike/master/Changelog.txt",
@@ -12,14 +12,14 @@
 	"VERSION":
 	{
 		"MAJOR": 0,
-		"MINOR": 4,
+		"MINOR": 5,
 		"PATCH": 0,
 		"BUILD": 0
 	},
 	"KSP_VERSION":
 	{
 		"MAJOR": 1,
-		"MINOR": 2,
-		"PATCH": 2
+		"MINOR": 3,
+		"PATCH": 0
 	}
 }
