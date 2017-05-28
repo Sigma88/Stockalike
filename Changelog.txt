@@ -1,5 +1,6 @@
 **v0.5.0**
 
+- Updated to KSP 1.3.0 and Kopernicus 1.3.0-1
 - Added required mods:
     > Sigma SciDefRenamer
     > Texture Replacer
@@ -7,6 +8,7 @@
 - Fixed useTheInName
 - Fixed RealAtmospheres
 - Added science for all bodies
+- Changed default Year1 to 2001
 - Changed the appearance of the Sun
 - Added kerbalized names for asteroids
 - Changed orbital period of Earth to be 365.25 days
