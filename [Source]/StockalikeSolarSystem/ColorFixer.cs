@@ -1,167 +1,137 @@
 ﻿using UnityEngine;
-using Kopernicus;
-using Kopernicus.Configuration;
-using Kopernicus.OnDemand;
-using System.Text;
 using System;
-using System.Reflection;
-using System.Linq;
-using KSP.UI.Screens;
 
 
 namespace SASSPlugin
 {
-    [ParserTargetExternal("Body", "ScaledVersion")]
-    public class RingLoader : BaseLoader, IParserEventSubscriber
-    {
-        void IParserEventSubscriber.Apply(ConfigNode node)
-        {
-        }
-
-        void IParserEventSubscriber.PostApply(ConfigNode node)
-        {
-            if (Loader.currentBody.name == "Saturn" || Loader.currentBody.name == "Sool")
-            {
-                Texture2D ringtext = Utility.CreateReadable(Loader.currentBody.rings.First().ring.texture);
-                ringtext.name = "SaturnRingRecolor";
-                ringtext.Apply();
-                Loader.currentBody.rings.First().ring.texture = ringtext;
-            }
-        }
-    }
-
-    [KSPAddon(KSPAddon.Startup.MainMenu, true)]
+    [KSPAddon(KSPAddon.Startup.Instantly, true)]
     public class ColorFixer : MonoBehaviour
     {
         void Start()
         {
-            // Recolor Saturn Rings
+            // RECOLOR SATURN RINGS
 
-            Texture2D RingText = Utility.CreateReadable(Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "OPM/KopernicusConfigs/OuterPlanets/RingTextures/Sarnus_ring"));
-            Texture2D MainText = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "SaturnRingRecolor");
+            // Load OPM's texture 'Sarnus_ring'
+            Texture2D RingText = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Sarnus_ring.png");
 
-            if (RingText != null && MainText != null)
+            // Skip if the texture does not exist
+            if (RingText != null)
             {
-                for (int x = 0; x < RingText.height; x++)
-                {
-                    Color color = RingText.GetPixel(0, x);
+                Color[] colors = RingText.GetPixels(0, 0, RingText.width, 1);
 
-                    color =
+                // If the texture is vertical, switch to horizontal
+                if (RingText.height > RingText.width)
+                {
+                    colors = RingText.GetPixels(0, 0, 1, RingText.height);
+                    RingText = new Texture2D(RingText.height, 1);
+                }
+
+                // Fix the colors
+                for (int x = 0; x < colors.Length; x++)
+                {
+                    colors[x] =
+                    new Color
+                    (
+                        colors[x].r * 0.895f,
+                        colors[x].g * 1.010f,
+                        colors[x].b * 1.095f,
+                        colors[x].a * 0.5f
+                    );
+                }
+
+                // Set the colors, apply and rename
+                RingText.SetPixels(0, 0, colors.Length, 1, colors);
+                RingText.Apply();
+                RingText.name = "SaturnRingRecolor";
+            }
+
+
+            // RECOLOR JUPITER
+
+            // Load Revolting Jool Texture
+            Texture2D TexJ = PNGtools.Load("GameData/RevoltingJoolRecolor/Textures/Revolting_Jool_Color.png");
+
+            // If the texture does not exist generate one
+            if (TexJ == null)
+            {
+                TexJ = new Texture2D(2, 2);
+                for (int i = 0; i < 4; i++)
+                {
+                    TexJ.SetPixel(i % 2, i / 2, new Color(0.463f, 0.259f, 0.173f, 1));
+                }
+            }
+            else
+            {
+                // Fix the colors
+                Color[] colors = TexJ.GetPixels();
+
+                for (int i = 0; i < colors.Length; i++)
+                {
+                    colors[i] =
                         new Color
                         (
-                            color.r * 0.895f,
-                            color.g * 1.010f,
-                            color.b * 1.095f,
-                            color.a * 0.5f
+                            Math.Max(colors[i].r, colors[i].g),
+                            Math.Min(colors[i].r, colors[i].g) * 0.6f + colors[i].b * 0.4f,
+                            colors[i].b,
+                            colors[i].a
                         );
-
-                    MainText.SetPixel(0, x, color);
                 }
 
-                MainText.Apply();
+                // Set the colors
+                TexJ.SetPixels(colors);
             }
 
-
-            // Recolor Jupiter's Texture
-
-            CelestialBody jupiter = FlightGlobals.Bodies.First(b => b.transform.name == "Jupiter" || b.transform.name == "Jool");
-
-            if (jupiter != null)
+            // Skip if the texture still does not exist
+            if (TexJ != null)
             {
-                Texture2D MainTex = Utility.CreateReadable(jupiter.scaledBody.GetComponent<Renderer>().material.GetTexture("_MainTex") as Texture2D);
+                // Apply and Rename
+                TexJ.Apply();
+                TexJ.name = "JupiterRecolor";
+            }
+            
 
-                for (int x = 0; x < MainTex.width; x++)
+            // RECOLOR NEPTUNE
+
+            // Load Revolting Jool Texture
+            Texture2D TexN = PNGtools.Load("GameData/GregroxNeptune/Neptune_Colorbig.png");
+
+            // If the texture does not exist generate one
+            if (TexN == null)
+            {
+                TexN = new Texture2D(2, 2);
+                for (int i = 0; i < 4; i++)
                 {
-                    for (int y = 0; y < MainTex.height; y++)
-                    {
-                        Color color = MainTex.GetPixel(x, y);
-
-                        color =
-                            new Color
-                            (
-                                Math.Max(color.r, color.g),
-                                Math.Min(color.r, color.g) * 0.6f + color.b * 0.4f,
-                                color.b,
-                                color.a
-                            );
-
-                        MainTex.SetPixel(x, y, color);
-                    }
-                }
-
-                MainTex.Apply();
-                MainTex.name = "JupiterRecolor";
-                jupiter.scaledBody.GetComponent<Renderer>().material.SetTexture("_MainTex", MainTex);
-
-                if (OnDemandStorage.useOnDemand)
-                {
-                    ScaledSpaceDemand demand = jupiter.scaledBody.GetComponent<ScaledSpaceDemand>();
-                    demand.texture = MainTex.name;
+                    TexN.SetPixel(i % 2, i / 2, new Color(0.300f, 0.500f, 1.000f, 1));
                 }
             }
-
-
-            // Recolor Neptune's Texture
-
-            CelestialBody neptune = FlightGlobals.Bodies.First(b => b.transform.name == "Neptune" || b.transform.name == "Nool");
-            if (neptune != null)
+            else
             {
-                Texture2D MainTex = Utility.CreateReadable(neptune.scaledBody.GetComponent<Renderer>().material.GetTexture("_MainTex") as Texture2D);
+                // Fix the color
+                Color[] colors = TexN.GetPixels();
 
-                for (int x = 0; x < MainTex.width; x++)
+                for (int i = 0; i < colors.Length; i++)
                 {
-                    for (int y = 0; y < MainTex.height; y++)
-                    {
-                        Color color1 = MainTex.GetPixel(x, y);
-                        color1 =
+                    colors[i] =
                         new Color
                         (
-                            (float)(Math.Pow(color1.r, 3) + Math.Pow(color1.b, 3) - 1),
-                            (float)(Math.Pow(color1.g / color1.b, 3) * 0.2f + (Math.Pow(color1.r, 3) + Math.Pow(color1.b, 3) - 1) * 0.8f),
+                            (float)(Math.Pow(colors[i].r, 3) + Math.Pow(colors[i].b, 3) - 1),
+                            (float)(Math.Pow(colors[i].g / colors[i].b, 3) * 0.2f + (Math.Pow(colors[i].r, 3) + Math.Pow(colors[i].b, 3) - 1) * 0.8f),
                             1,
                             1
                         );
-                        MainTex.SetPixel(x, y, color1);
-                    }
-                }
-                MainTex.Apply();
-                MainTex.name = "NeptuneRecolor";
-                neptune.scaledBody.GetComponent<Renderer>().material.SetTexture("_MainTex", MainTex);
 
-                if (OnDemandStorage.useOnDemand)
-                {
-                    ScaledSpaceDemand demand = neptune.scaledBody.GetComponent<ScaledSpaceDemand>();
-                    demand.texture = MainTex.name;
+                    // Set the colors
+                    TexN.SetPixels(colors);
                 }
             }
-        }
 
-        void LateUpdate()
-        {
-            if (HighLogic.LoadedScene == GameScenes.SPACECENTER)
+            // Skip if the texture still does not exist
+            if (TexN != null)
             {
-                foreach (RDArchivesController controller in Resources.FindObjectsOfTypeAll<RDArchivesController>())
-                    controller.gameObject.AddOrGetComponent<RnDFixer>();
+                // Apply and Rename
+                TexN.Apply();
+                TexN.name = "NeptuneRecolor";
             }
-        }
-    }
-
-    public class RnDFixer : MonoBehaviour
-    {
-        void Start()
-        {
-            Texture2D jupiter = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "JupiterRecolor");
-            RDPlanetListItemContainer itemJ = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Jupiter" || i.name == "Jool");
-
-            if (jupiter != null && itemJ != null)
-                itemJ.planet.GetComponent<Renderer>().material.mainTexture = jupiter;
-
-
-            Texture2D neptune = Resources.FindObjectsOfTypeAll<Texture2D>().First(t => t.name == "NeptuneRecolor");
-            RDPlanetListItemContainer itemN = Resources.FindObjectsOfTypeAll<RDPlanetListItemContainer>().First(i => i.name == "Neptune" || i.name == "Nool");
-
-            if (neptune != null && itemN != null)
-                itemN.planet.GetComponent<Renderer>().material.mainTexture = neptune;
         }
     }
 }
