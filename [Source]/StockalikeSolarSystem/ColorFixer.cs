@@ -9,6 +9,25 @@ namespace SASSPlugin
     {
         void Start()
         {
+            // FIX URANUS RINGS
+
+            // Load OPM's texture 'Urlum_ring'
+            Texture2D uranus = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Urlum_ring.png");
+
+            // Skip if the texture does not exist or it is already horizontal
+            if (uranus != null && uranus.height > uranus.width)
+            {
+                Color[] colors = uranus.GetPixels(0, 0, 1, uranus.height);
+                uranus = new Texture2D(uranus.height, 1);
+
+
+                // Set the colors, apply and rename
+                uranus.SetPixels(0, 0, colors.Length, 1, colors);
+                uranus.Apply();
+                uranus.name = "SaturnRingRecolor";
+            }
+
+
             // RECOLOR SATURN RINGS
 
             // Load OPM's texture 'Sarnus_ring'
