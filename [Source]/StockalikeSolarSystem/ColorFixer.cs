@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
-
+using Kopernicus;
+using System.Linq;
 
 namespace SASSPlugin
 {
@@ -20,11 +21,10 @@ namespace SASSPlugin
                 Color[] colors = uranus.GetPixels(0, 0, 1, uranus.height);
                 uranus = new Texture2D(uranus.height, 1);
 
-
                 // Set the colors, apply and rename
                 uranus.SetPixels(0, 0, colors.Length, 1, colors);
                 uranus.Apply();
-                uranus.name = "SaturnRingRecolor";
+                uranus.name = "UranusRingFix";
             }
 
 
@@ -107,26 +107,37 @@ namespace SASSPlugin
                 jupiter.Apply();
                 jupiter.name = "JupiterRecolor";
             }
-            
+
 
             // RECOLOR NEPTUNE
 
-            // Load Revolting Jool Texture
-            Texture2D neptune = PNGtools.Load("GameData/GregroxNeptune/Neptune_Colorbig.dds");
+            // Generate a temporary texture
+            Texture2D neptune = neptune = new Texture2D(2, 2);
 
-            // If the texture does not exist generate one
-            if (neptune == null)
+            // Color it blue in case the real texture is not found later
+            for (int i = 0; i < 4; i++)
             {
-                neptune = new Texture2D(2, 2);
-                for (int i = 0; i < 4; i++)
-                {
-                    neptune.SetPixel(i % 2, i / 2, new Color(0.300f, 0.500f, 1.000f, 1));
-                }
+                neptune.SetPixel(i % 2, i / 2, new Color(0.300f, 0.500f, 1.000f, 1));
             }
-            else
+
+            // Apply and Rename
+            neptune.Apply();
+            neptune.name = "NeptuneRecolor";
+        }
+    }
+
+    [KSPAddon(KSPAddon.Startup.MainMenu, true)]
+    public class NeptuneFixer : MonoBehaviour
+    {
+        void Start()
+        {
+            Texture2D texture = Utility.CreateReadable(Resources.FindObjectsOfTypeAll<Texture>().FirstOrDefault(t => t.name == "GregroxNeptune/Neptune_Colorbig") as Texture2D);
+            Texture2D neptune = Resources.FindObjectsOfTypeAll<Texture2D>().FirstOrDefault(t => t.name == "NeptuneRecolor");
+
+            if (texture != null && neptune != null)
             {
                 // Fix the color
-                Color[] colors = neptune.GetPixels();
+                Color[] colors = texture.GetPixels();
 
                 for (int i = 0; i < colors.Length; i++)
                 {
@@ -138,18 +149,12 @@ namespace SASSPlugin
                             1,
                             1
                         );
-
-                    // Set the colors
-                    neptune.SetPixels(colors);
                 }
-            }
 
-            // Skip if the texture still does not exist
-            if (neptune != null)
-            {
-                // Apply and Rename
+                // Set the colors and apply
+                neptune.Resize(texture.width, texture.height);
+                neptune.SetPixels(colors);
                 neptune.Apply();
-                neptune.name = "NeptuneRecolor";
             }
         }
     }
