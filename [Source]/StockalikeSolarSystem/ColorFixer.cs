@@ -91,7 +91,7 @@ namespace SASSPlugin
 
                 // Move F Ring
                 Color[] RingF = saturn.GetPixels(saturn.width - saturn.width / 16, 0, saturn.width / 16, saturn.height).Reverse().ToArray();
-                
+
                 Color[] Rings = saturn.GetPixels(0, 0, saturn.width * 15 / 16, saturn.height);
                 saturn.SetPixels(saturn.width / 16, 0, Rings.Length / saturn.height, saturn.height, Rings);
                 saturn.SetPixels(0, 0, saturn.width / 16, saturn.height, RingF);
