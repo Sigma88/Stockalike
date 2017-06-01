@@ -12,18 +12,18 @@ namespace SASSPlugin
             // RECOLOR SATURN RINGS
 
             // Load OPM's texture 'Sarnus_ring'
-            Texture2D RingText = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Sarnus_ring.png");
+            Texture2D saturn = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Sarnus_ring.png");
 
             // Skip if the texture does not exist
-            if (RingText != null)
+            if (saturn != null)
             {
-                Color[] colors = RingText.GetPixels(0, 0, RingText.width, 1);
+                Color[] colors = saturn.GetPixels(0, 0, saturn.width, 1);
 
                 // If the texture is vertical, switch to horizontal
-                if (RingText.height > RingText.width)
+                if (saturn.height > saturn.width)
                 {
-                    colors = RingText.GetPixels(0, 0, 1, RingText.height);
-                    RingText = new Texture2D(RingText.height, 1);
+                    colors = saturn.GetPixels(0, 0, 1, saturn.height);
+                    saturn = new Texture2D(saturn.height, 1);
                 }
 
                 // Fix the colors
@@ -40,30 +40,30 @@ namespace SASSPlugin
                 }
 
                 // Set the colors, apply and rename
-                RingText.SetPixels(0, 0, colors.Length, 1, colors);
-                RingText.Apply();
-                RingText.name = "SaturnRingRecolor";
+                saturn.SetPixels(0, 0, colors.Length, 1, colors);
+                saturn.Apply();
+                saturn.name = "SaturnRingRecolor";
             }
 
 
             // RECOLOR JUPITER
 
             // Load Revolting Jool Texture
-            Texture2D TexJ = PNGtools.Load("GameData/RevoltingJoolRecolor/Textures/Revolting_Jool_Color.png");
+            Texture2D jupiter = PNGtools.Load("GameData/RevoltingJoolRecolor/Textures/Revolting_Jool_Color.png");
 
             // If the texture does not exist generate one
-            if (TexJ == null)
+            if (jupiter == null)
             {
-                TexJ = new Texture2D(2, 2);
+                jupiter = new Texture2D(2, 2);
                 for (int i = 0; i < 4; i++)
                 {
-                    TexJ.SetPixel(i % 2, i / 2, new Color(0.463f, 0.259f, 0.173f, 1));
+                    jupiter.SetPixel(i % 2, i / 2, new Color(0.463f, 0.259f, 0.173f, 1));
                 }
             }
             else
             {
                 // Fix the colors
-                Color[] colors = TexJ.GetPixels();
+                Color[] colors = jupiter.GetPixels();
 
                 for (int i = 0; i < colors.Length; i++)
                 {
@@ -78,36 +78,36 @@ namespace SASSPlugin
                 }
 
                 // Set the colors
-                TexJ.SetPixels(colors);
+                jupiter.SetPixels(colors);
             }
 
             // Skip if the texture still does not exist
-            if (TexJ != null)
+            if (jupiter != null)
             {
                 // Apply and Rename
-                TexJ.Apply();
-                TexJ.name = "JupiterRecolor";
+                jupiter.Apply();
+                jupiter.name = "JupiterRecolor";
             }
             
 
             // RECOLOR NEPTUNE
 
             // Load Revolting Jool Texture
-            Texture2D TexN = PNGtools.Load("GameData/GregroxNeptune/Neptune_Colorbig.png");
+            Texture2D neptune = PNGtools.Load("GameData/GregroxNeptune/Neptune_Colorbig.dds");
 
             // If the texture does not exist generate one
-            if (TexN == null)
+            if (neptune == null)
             {
-                TexN = new Texture2D(2, 2);
+                neptune = new Texture2D(2, 2);
                 for (int i = 0; i < 4; i++)
                 {
-                    TexN.SetPixel(i % 2, i / 2, new Color(0.300f, 0.500f, 1.000f, 1));
+                    neptune.SetPixel(i % 2, i / 2, new Color(0.300f, 0.500f, 1.000f, 1));
                 }
             }
             else
             {
                 // Fix the color
-                Color[] colors = TexN.GetPixels();
+                Color[] colors = neptune.GetPixels();
 
                 for (int i = 0; i < colors.Length; i++)
                 {
@@ -121,16 +121,16 @@ namespace SASSPlugin
                         );
 
                     // Set the colors
-                    TexN.SetPixels(colors);
+                    neptune.SetPixels(colors);
                 }
             }
 
             // Skip if the texture still does not exist
-            if (TexN != null)
+            if (neptune != null)
             {
                 // Apply and Rename
-                TexN.Apply();
-                TexN.name = "NeptuneRecolor";
+                neptune.Apply();
+                neptune.name = "NeptuneRecolor";
             }
         }
     }
