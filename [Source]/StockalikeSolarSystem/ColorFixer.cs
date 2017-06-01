@@ -15,17 +15,31 @@ namespace SASSPlugin
             // Load OPM's texture 'Urlum_ring'
             Texture2D uranus = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Urlum_ring.png");
 
-            // Skip if the texture does not exist or it is already horizontal
-            if (uranus != null && uranus.height > uranus.width)
+            // If the texture does not exist generate one
+            if (uranus == null)
             {
-                Color[] colors = uranus.GetPixels(0, 0, 1, uranus.height);
-                uranus = new Texture2D(uranus.height, 1);
+                uranus = new Texture2D(2, 2);
 
-                // Set the colors, apply and rename
-                uranus.SetPixels(0, 0, colors.Length, 1, colors);
-                uranus.Apply();
-                uranus.name = "UranusRingFix";
+                for (int i = 0; i < 4; i++)
+                {
+                    uranus.SetPixel(i % 2, i / 2, new Color(1f, 1f, 1f, 0));
+                }
             }
+            // If the texture is vertical, switch to horizontal
+            else if (uranus.height > uranus.width)
+            {
+                Color[] colors = uranus.GetPixels(0, 0, uranus.width, uranus.height);
+                uranus = new Texture2D(uranus.height, uranus.width);
+
+                for (int i = 0; i < uranus.height; i++)
+                {
+                    uranus.SetPixels(0, i, uranus.width, 1, colors.Skip(i * uranus.width).Take(uranus.width).ToArray());
+                }
+            }
+
+            // Apply and Rename
+            uranus.Apply();
+            uranus.name = "UranusRingFix";
 
 
             // RECOLOR SATURN RINGS
@@ -33,17 +47,19 @@ namespace SASSPlugin
             // Load OPM's texture 'Sarnus_ring'
             Texture2D saturn = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Sarnus_ring.png");
 
-            // Skip if the texture does not exist
-            if (saturn != null)
+            // If the texture does not exist generate one
+            if (saturn == null)
             {
-                Color[] colors = saturn.GetPixels(0, 0, saturn.width, 1);
+                saturn = new Texture2D(2, 2);
 
-                // If the texture is vertical, switch to horizontal
-                if (saturn.height > saturn.width)
+                for (int i = 0; i < 4; i++)
                 {
-                    colors = saturn.GetPixels(0, 0, 1, saturn.height);
-                    saturn = new Texture2D(saturn.height, 1);
+                    saturn.SetPixel(i % 2, i / 2, new Color(1f, 1f, 1f, 0));
                 }
+            }
+            else
+            {
+                Color[] colors = saturn.GetPixels(0, 0, saturn.width, saturn.height);
 
                 // Fix the colors
                 for (int x = 0; x < colors.Length; x++)
@@ -54,15 +70,37 @@ namespace SASSPlugin
                         colors[x].r * 0.895f,
                         colors[x].g * 1.010f,
                         colors[x].b * 1.095f,
-                        colors[x].a * 0.5f
+                        colors[x].a
                     );
                 }
 
-                // Set the colors, apply and rename
-                saturn.SetPixels(0, 0, colors.Length, 1, colors);
-                saturn.Apply();
-                saturn.name = "SaturnRingRecolor";
+                // If the texture is vertical, switch to horizontal
+                if (saturn.height > saturn.width)
+                {
+                    saturn = new Texture2D(saturn.height, saturn.width);
+
+                    for (int i = 0; i < saturn.height; i++)
+                    {
+                        saturn.SetPixels(0, i, saturn.width, 1, colors.Skip(i * saturn.width).Take(saturn.width).ToArray());
+                    }
+                }
+                else
+                {
+                    saturn.SetPixels(0, 0, saturn.width, saturn.height, colors);
+                }
+
+                // Move F Ring
+                Color[] RingF = saturn.GetPixels(saturn.width - saturn.width / 16, 0, saturn.width / 16, saturn.height).Reverse().ToArray();
+                
+                Color[] Rings = saturn.GetPixels(0, 0, saturn.width * 15 / 16, saturn.height);
+                saturn.SetPixels(saturn.width / 16, 0, Rings.Length / saturn.height, saturn.height, Rings);
+                saturn.SetPixels(0, 0, saturn.width / 16, saturn.height, RingF);
+                PNGtools.Export(saturn, "GameData/StockalikeSolarSystem", "saturn_rings");
             }
+
+            // Apply and Rename
+            saturn.Apply();
+            saturn.name = "SaturnRingRecolor";
 
 
             // RECOLOR JUPITER
