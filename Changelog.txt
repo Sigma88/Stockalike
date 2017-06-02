@@ -5,6 +5,7 @@
 - Updated Kronometer settings
 - Updated the rings to use the new shader
 - Rearranged Saturn's rings
+- Some Biomes Fixes
 
 
 **v0.5.0**
