@@ -195,4 +195,19 @@ namespace SASSPlugin
             }
         }
     }
+
+    [KSPAddon(KSPAddon.Startup.Instantly, true)]
+    public class DisableTextureReplacer : MonoBehaviour
+    {
+        void Start()
+        {
+            if (AssemblyLoader.loadedAssemblies.FirstOrDefault(a => a.name == "GalacticNeighborhood") != null)
+            {
+                foreach (ConfigNode SASSTR in GameDatabase.Instance.GetConfigNodes("TextureReplacer").Where(c => c.HasValue("paths") && c.GetValue("paths").StartsWith("StockalikeSolarSystem/")))
+                {
+                    SASSTR.ClearData();
+                }
+            }
+        }
+    }
 }

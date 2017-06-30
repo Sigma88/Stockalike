@@ -29,6 +29,8 @@ namespace SASSPlugin
 
         void Awake()
         {
+            if (AssemblyLoader.loadedAssemblies.FirstOrDefault(a => a.name == "GalacticNeighborhood") != null) return;
+
             useSASSLoadingScreen = GetSetting("useSASSLoadingScreen", true);
             if (useSASSLoadingScreen)
             {
