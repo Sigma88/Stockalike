@@ -15,7 +15,7 @@ namespace SASSPlugin
         string path = KSPUtil.ApplicationRootPath + "GameData/StockalikeSolarSystem/Textures/LoadingScreen/";
         List<string> missing = new List<string>();
 
-        public static NewLoadingScreen newLoadingScreen { get; set; }
+        public static NewLoadingScreen newLoadingScreen = null;
         public static bool useSASSLoadingScreen = true;
         public static bool keepStockLogo = false;
         public static bool keepGreenKerbals = false;
@@ -29,6 +29,8 @@ namespace SASSPlugin
 
         void Awake()
         {
+            if (AssemblyLoader.loadedAssemblies.FirstOrDefault(a => a.name == "GalacticNeighborhood") != null) return;
+
             useSASSLoadingScreen = GetSetting("useSASSLoadingScreen", true);
             if (useSASSLoadingScreen)
             {
@@ -69,7 +71,7 @@ namespace SASSPlugin
 
         void Update()
         {
-            if (!skip && LoadingScreen.Instance != null)
+            if (!skip && LoadingScreen.Instance != null && newLoadingScreen != null)
             {
                 newLoadingScreen.UpdateScreens(LoadingScreen.Instance.Screens[1]);
                 skip = true;

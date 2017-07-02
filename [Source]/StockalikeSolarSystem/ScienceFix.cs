@@ -13,6 +13,8 @@ namespace SASSPlugin
     {
         void Awake()
         {
+            if (AssemblyLoader.loadedAssemblies.FirstOrDefault(a => a.name == "GalacticNeighborhood") != null) return;
+
             foreach (ConfigNode config in GameDatabase.Instance.GetConfigNodes("EXPERIMENT_DEFINITION"))
             {
                 if (!config.HasNode("RESULTS") || !config.HasNode("STOCK_RESULTS") || !config.GetNode("STOCK_RESULTS").HasNode("RESULTS")) continue;

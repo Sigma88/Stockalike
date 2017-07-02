@@ -17,6 +17,8 @@ namespace SASSPlugin
 
         void Awake()
         {
+            if (AssemblyLoader.loadedAssemblies.FirstOrDefault(a => a.name == "GalacticNeighborhood") != null) return;
+
             ConfigNode Names = GameDatabase.Instance.GetConfigNodes("StockalikeSolarSystemNames").FirstOrDefault();
             if (Names == null || !Names.HasNode("FULL") || !Names.HasNode("FIRST") || !Names.GetNode("FIRST").HasValues(new[] { "coolM", "coolF" }) || !Names.HasNode("LAST") || !Names.GetNode("LAST").HasValues(new[] { "cool", "boring" })) return;
             specialNames = Names.GetNode("FULL");
