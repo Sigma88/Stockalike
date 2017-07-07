@@ -1,3 +1,9 @@
+**v0.5.3**
+
+- Fixed Eve Recolor compatibility
+- Fixed Epoch calculation
+
+
 **v0.5.2**
 
 - Fixed GN compatibility
