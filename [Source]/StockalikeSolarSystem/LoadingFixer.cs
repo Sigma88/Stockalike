@@ -237,7 +237,7 @@ namespace SASSPlugin
         {
             List<Texture2D> list = new List<Texture2D>();
 
-            bool addKerbals = (FixLoadingScreen.recolorKerbals || FixLoadingScreen.keepGreenKerbals) && (rnd.Next(FixLoadingScreen.LogoChance + FixLoadingScreen.KerbalsChance) < FixLoadingScreen.KerbalsChance);
+            bool addKerbals = FixLoadingScreen.recolorKerbals || FixLoadingScreen.keepGreenKerbals;
 
             if (addKerbals)
             {
@@ -265,8 +265,7 @@ namespace SASSPlugin
                 }
             }
 
-            if (list.Count == 0)
-                AddLogo(list);
+            AddLogo(list, 16 - list.Count);
 
             if (list.Count > 0)
                 return list;
@@ -274,39 +273,46 @@ namespace SASSPlugin
             return new List<Texture2D>();
         }
 
-        void AddLogo(List<Texture2D> list)
+        void AddLogo(List<Texture2D> list, int count)
         {
             List<string> planets = new[] { "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" }.ToList();
+
             if (FixLoadingScreen.keepStockLogo)
                 planets.Add("StockLogo");
 
-            Texture2D tex = PNGtools.Load(path + "Planets/" + planets[rnd.Next(planets.Count)] + ".png");
-            Color[] logo = PNGtools.Load(path + "Fixes/SASSlogo.png", false).GetPixels();
-
-            if (tex == null || logo.Length == 0)
+            for (int i = 0; i < Math.Min(count, 9); i++)
             {
-                if (StockLogo != null)
-                    list.Add(StockLogo);
-                return;
-            }
+                int planetIndex = rnd.Next(planets.Count);
+                Texture2D tex = PNGtools.Load(path + "Planets/" + planets[planetIndex] + ".png");
+                Color[] logo = PNGtools.Load(path + "Fixes/SASSlogo.png", false).GetPixels();
 
-            int x = -1;
-            int y = 0;
-            for (int p = 0; p < logo.Length; p++)
-            {
-                x++;
-                if (x == tex.width)
+                planets.RemoveAt(planetIndex);
+
+                if (tex == null || logo.Length == 0)
                 {
-                    x = 0;
-                    y++;
+                    if (StockLogo != null && !list.Contains(StockLogo))
+                        list.Add(StockLogo);
+                    continue;
                 }
-                if (y == tex.height) break;
-                Color color = new Color(logo[p].r, logo[p].g, logo[p].b, 1);
-                tex.SetPixel(x, y, Color.Lerp(tex.GetPixel(x, y), color, logo[p].a));
-            }
 
-            tex.Apply();
-            list.Add(tex);
+                int x = -1;
+                int y = 0;
+                for (int p = 0; p < logo.Length; p++)
+                {
+                    x++;
+                    if (x == tex.width)
+                    {
+                        x = 0;
+                        y++;
+                    }
+                    if (y == tex.height) break;
+                    Color color = new Color(logo[p].r, logo[p].g, logo[p].b, 1);
+                    tex.SetPixel(x, y, Color.Lerp(tex.GetPixel(x, y), color, logo[p].a));
+                }
+
+                tex.Apply();
+                list.Add(tex);
+            }
         }
     }
 

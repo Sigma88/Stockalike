@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Linq;
+﻿using System.Linq;
+using UnityEngine;
 using Random = System.Random;
 
 
@@ -73,6 +73,7 @@ namespace SASSPlugin
             int n = rnd.Next(list.Length);
             return list[n];
         }
+
         int Pick(int max)
         {
             return rnd.Next(max);
