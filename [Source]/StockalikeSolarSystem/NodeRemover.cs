@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Linq;
 
 
 namespace SASSPlugin
@@ -9,9 +8,12 @@ namespace SASSPlugin
     {
         void Start()
         {
-            foreach (UrlDir.UrlConfig node in GameDatabase.Instance.GetConfigs("StockalikeSolarSystem").Where(c => c.url != "StockalikeSolarSystem/Settings/StockalikeSolarSystem"))
+            var nodes = GameDatabase.Instance.GetConfigs("StockalikeSolarSystem");
+
+            for (int i = 0; i < nodes.Length; i++)
             {
-                node.parent.configs.Remove(node);
+                if (nodes[i].url != "StockalikeSolarSystem/Settings/StockalikeSolarSystem")
+                    nodes[i].parent.configs.Remove(nodes[i]);
             }
         }
     }

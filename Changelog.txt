@@ -1,3 +1,14 @@
+**v0.5.4**
+
+- Updated to KSP 1.3.1 and Kopernicus 1.3.1-2
+- Removed required mods:
+    > Texture Replacer
+    > Human Colored Faces
+    > Outer Planets Mod
+- Added required mods:
+    > OPM_Galileo
+
+
 **v0.5.3**
 
 - Fixed Eve Recolor compatibility

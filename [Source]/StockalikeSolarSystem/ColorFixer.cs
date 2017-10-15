@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using System;
-using Kopernicus;
+﻿using System;
 using System.Linq;
+using UnityEngine;
+using Kopernicus;
+
 
 namespace SASSPlugin
 {
@@ -13,39 +14,39 @@ namespace SASSPlugin
             // FIX URANUS RINGS
 
             // Load OPM's texture 'Urlum_ring'
-            Texture2D uranus = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Urlum_ring.png");
+            Texture2D uranusRing = PNGtools.Load("GameData/OPM/OPM_Textures/Urlum_ring.png");
 
             // If the texture does not exist generate one
-            if (uranus == null)
+            if (uranusRing == null)
             {
-                uranus = new Texture2D(2, 2);
+                uranusRing = new Texture2D(2, 2);
 
                 for (int i = 0; i < 4; i++)
                 {
-                    uranus.SetPixel(i % 2, i / 2, new Color(1f, 1f, 1f, 0));
+                    uranusRing.SetPixel(i % 2, i / 2, new Color(1f, 1f, 1f, 0));
                 }
             }
             // If the texture is vertical, switch to horizontal
-            else if (uranus.height > uranus.width)
+            else if (uranusRing.height > uranusRing.width)
             {
-                Color[] colors = uranus.GetPixels(0, 0, uranus.width, uranus.height);
-                uranus = new Texture2D(uranus.height, uranus.width);
+                Color[] colors = uranusRing.GetPixels(0, 0, uranusRing.width, uranusRing.height);
+                uranusRing = new Texture2D(uranusRing.height, uranusRing.width);
 
-                for (int i = 0; i < uranus.height; i++)
+                for (int i = 0; i < uranusRing.height; i++)
                 {
-                    uranus.SetPixels(0, i, uranus.width, 1, colors.Skip(i * uranus.width).Take(uranus.width).ToArray());
+                    uranusRing.SetPixels(0, i, uranusRing.width, 1, colors.Skip(i * uranusRing.width).Take(uranusRing.width).ToArray());
                 }
             }
 
             // Apply and Rename
-            uranus.Apply();
-            uranus.name = "UranusRingFix";
+            uranusRing.Apply();
+            uranusRing.name = "UranusRingFix";
 
 
             // RECOLOR SATURN RINGS
 
             // Load OPM's texture 'Sarnus_ring'
-            Texture2D saturn = PNGtools.Load("GameData/OPM/KopernicusConfigs/OuterPlanets/RingTextures/Sarnus_ring.png");
+            Texture2D saturn = PNGtools.Load("GameData/OPM/OPM_Textures/Sarnus_ring.png");
 
             // If the texture does not exist generate one
             if (saturn == null)
@@ -144,6 +145,19 @@ namespace SASSPlugin
                 jupiter.Apply();
                 jupiter.name = "JupiterRecolor";
             }
+
+
+            // CREATE URANUS TEXTURE
+            
+            Texture2D uranus = new Texture2D(2, 2);
+
+            for (int i = 0; i < 4; i++)
+            {
+                uranus.SetPixel(i % 2, i / 2, new Color(0.800f, 0.871f, 0.518f, 1));
+            }
+
+            uranus.Apply();
+            uranus.name = "UranusRecolor";
 
 
             // RECOLOR NEPTUNE
