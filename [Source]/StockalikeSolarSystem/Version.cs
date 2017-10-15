@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace SigmaDimensionsPlugin
+namespace SASSPlugin
 {
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
     public class Version : MonoBehaviour
