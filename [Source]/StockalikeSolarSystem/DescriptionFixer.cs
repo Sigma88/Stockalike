@@ -11,12 +11,17 @@ namespace SASSPlugin
     internal class SigmaBinary : MonoBehaviour
     {
         /// <summary> List of all objects of type 'Body'. </summary>
-        internal static List<CelestialBody> ListOfBodies = new List<CelestialBody>();
+        static List<CelestialBody> ListOfBodies = new List<CelestialBody>();
+
+        static string Earth = "Kerbin";
 
         void Start()
         {
             Kopernicus.Events.OnBodyPostApply.Add(AddBodyToList);
             Kopernicus.Events.OnLoaderLoadedAllBodies.Add(DescriptionFixer);
+
+            if (AssemblyLoader.loadedAssemblies.FirstOrDefault(a => a.name == "GalacticNeighborhood") != null)
+                Earth = "Earth";
         }
 
         void AddBodyToList(Body body, ConfigNode node)
@@ -30,7 +35,7 @@ namespace SASSPlugin
             {
                 CelestialBody body = ListOfBodies[i];
                 string description = body?.bodyDescription;
-                while(description?.Contains("<<") == true && description?.Contains(">>") == true)
+                while (description?.Contains("<<") == true && description?.Contains(">>") == true)
                 {
                     int start = description.IndexOf("<<");
                     int end = description.IndexOf(">>");
@@ -46,7 +51,7 @@ namespace SASSPlugin
                         try
                         {
                             name = description.Substring(start + 2, end - start - 2);
-                            if (name == "Earth") name = "Kerbin";
+                            if (name == "Earth") name = Earth;
                             name = ListOfBodies.FirstOrDefault(b => b.name == name).bodyDisplayName;
                         }
                         catch
