@@ -10,7 +10,6 @@ namespace SASSPlugin
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
     internal class SigmaBinary : MonoBehaviour
     {
-        /// <summary> List of all objects of type 'Body'. </summary>
         static List<CelestialBody> ListOfBodies = new List<CelestialBody>();
 
         static string Earth = "Kerbin";
