@@ -1,0 +1,25 @@
+{
+	"NAME": "<b><color=#9B59B6>Stock-alike Solar System Visuals</color></b>",
+	"URL": "https://raw.githubusercontent.com/Sigma88/Stockalike/master/[Visuals]/GameData/StockalikeSolarSystemVisuals/StockalikeSolarSystemVisuals.version",
+	"DOWNLOAD": "https://github.com/Sigma88/Stockalike/releases",
+	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/Sigma88/Stockalike/master/[Visuals]/Changelog.txt",
+	"GITHUB":
+	{
+		"USERNAME": "Sigma88",
+		"REPOSITORY": "Stockalike",
+		"ALLOW_PRE_RELEASE": true
+	},
+	"VERSION":
+	{
+		"MAJOR": 0,
+		"MINOR": 1,
+		"PATCH": 0,
+		"BUILD": 0
+	},
+	"KSP_VERSION":
+	{
+		"MAJOR": 1,
+		"MINOR": 3,
+		"PATCH": 1
+	}
+}
