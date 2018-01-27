@@ -2,6 +2,10 @@
 
 - Added support for localization
 - Fixed science reports for Charon
+- Fixed 24Hclock option
+- Fixed Year1 option
+- Fixed barycenter name for Pluto-Charon binary
+- A visual pack is now available for SASS
 
 
 **v0.5.4**
