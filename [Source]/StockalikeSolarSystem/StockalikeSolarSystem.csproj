@@ -38,6 +38,7 @@
     <Compile Include="ColorFixer.cs" />
     <Compile Include="Replacements.cs" />
     <Compile Include="ScienceFix.cs" />
+    <Compile Include="DescriptionFixer.cs" />
     <Compile Include="Version.cs" />
   </ItemGroup>
   <ItemGroup>
