@@ -21,7 +21,7 @@ Dev version: https://github.com/Sigma88/Stockalike/tree/Development
 - [OPM_Galileo](http://forum.kerbalspaceprogram.com/index.php?/topic/165854-0/)
 - [Revamped Stock Solar System](http://forum.kerbalspaceprogram.com/index.php?/topic/134360-0/)
 - [Revolting Jool Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/142085-0/)
-- [Saru Planet Pack](http://forum.kerbalspaceprogram.com/index.php?/topic/119263-0/)
+- [Saru Planet Pack](https://github.com/Sigma88/GN-PlanetPacks/releases/tag/Saru)
 - [Sentar Expansion](http://forum.kerbalspaceprogram.com/index.php?/topic/117355-0/)
 - [Sigma: Eve Recolor](http://forum.kerbalspaceprogram.com/index.php?/topic/122481-0/)
 - [Stockalike Neptune](http://forum.kerbalspaceprogram.com/index.php?/topic/142085-0/)
